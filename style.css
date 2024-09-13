@@ -1,0 +1,55 @@
+body{
+    background-image: linear-gradient(to right, #0a5b20 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+  }
+  .palm-tree{
+    position: fixed;
+    width: 892px;
+    height: 600px;
+    object-fit:none;
+    object-position: 0 40px;
+    scale: 0.3;
+  }
+  .right {
+    right: -400px;
+    rotate: -90deg;
+  }
+  .left {
+    left: -400px;
+    rotate: 90deg;
+  }
+  .up {
+    top: -300px;
+  }
+  .down {
+    bottom: -250px;
+  }
+  @media only screen and (min-width: 425px) {
+    .left{
+      left: -360px;
+    }
+    .right{
+      right: -360px;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+  .right {
+    right: -324px;
+  }
+  .left {
+    left: -324px;
+  }
+    .palm-tree{
+      scale: 0.5;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+  .right {
+    right: -324px;
+  }
+  .left {
+    left: -324px;
+  }
+    .palm-tree{
+      scale: 0.7;
+    }
+  }
