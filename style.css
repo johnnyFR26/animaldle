@@ -1,5 +1,8 @@
 body{
-    background-image: linear-gradient(to right, #0a5b20 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    display: flex;
+    justify-content: center;
+    margin: 0;
   }
   .palm-tree{
     position: fixed;
@@ -53,3 +56,19 @@ body{
       scale: 0.7;
     }
   }
+ .logo {
+  display: grid;
+  place-items: center;
+  min-width: 50%;
+ }
+ .logo *{
+  width: 50%;
+ }
+ .logo *:first-child {
+  width: 100%;
+ }
+ .label {
+ position:relative;
+ top: -121%;
+}
+
