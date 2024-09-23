@@ -5,13 +5,15 @@
     position: relative;
     margin: -8px;
     height: 90vh;
-    z-index: -6;
+    z-index: 0;
   }
   .xuncras{
+    position:relative;
     background-color: white;
     justify-content: center;
     margin: -8px;
     padding: 20px;
+    z-index: 5;
   }
 section {
     position: absolute;
@@ -30,7 +32,7 @@ section {
   }
   section .wave.wave1{
     animation: animate 10s linear infinite;
-    z-index: -3;
+    z-index: 3;
     opacity: 1;
     animation-delay: 0s;
     bottom: 0;
@@ -42,7 +44,7 @@ section {
   }
   section .wave.wave2{
     animation: animate2 4s linear infinite;
-    z-index: -4;
+    z-index: 2;
     opacity: 0.5;
     animation-delay: -5s;
     bottom: 30px;
@@ -58,7 +60,7 @@ section {
     object-fit:none;
     object-position: 0 40px;
     scale: 0.3;
-    z-index: -5;
+    z-index: 1;
   }
   .palm-tree.right {
     right: -386px;
@@ -110,7 +112,7 @@ section {
     }
   }
 .logo {
-    z-index: -2;
+    z-index: 4;
     display: grid;
     place-items: center;
     min-width: 50%;

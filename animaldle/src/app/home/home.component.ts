@@ -11,4 +11,8 @@ import { GameComponent } from '../game/game.component';
 })
 export class HomeComponent {
 
+  StartGame() {
+    console.log('Starting...')
+  }
+
 }
