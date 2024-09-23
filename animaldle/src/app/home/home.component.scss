@@ -1,0 +1,144 @@
+.xangas{
+    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: -8px;
+    height: 90vh;
+    z-index: -6;
+  }
+  .xuncras{
+    background-color: white;
+    justify-content: center;
+    margin: -8px;
+    padding: 20px;
+  }
+section {
+    position: absolute;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+  }
+  section .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('images/wave.png');
+    background-size: 600px  100px;
+  }
+  section .wave.wave1{
+    animation: animate 10s linear infinite;
+    z-index: -3;
+    opacity: 1;
+    animation-delay: 0s;
+    bottom: 0;
+    background-size: 300px  100px;
+  }
+  @keyframes animate {
+    0% { background-position: 0px;}
+    100% { background-position: 300px;}
+  }
+  section .wave.wave2{
+    animation: animate2 4s linear infinite;
+    z-index: -4;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 30px;
+  }
+  @keyframes animate2 {
+    0% { background-position: 0px;}
+    100% { background-position: -600px;}
+  }
+.palm-tree{
+    position: absolute;
+    width: 892px;
+    height: 400px;
+    object-fit:none;
+    object-position: 0 40px;
+    scale: 0.3;
+    z-index: -5;
+  }
+  .palm-tree.right {
+    right: -386px;
+    rotate: -90deg;
+  }
+  .palm-tree.left {
+    left: -386px;
+    rotate: 90deg;
+  }
+  .palm-tree.up {
+    top: -300px;
+  }
+  .palm-tree.down {
+    bottom: 0;
+  }
+  @media only screen and (min-width: 425px) {
+    .palm-tree{
+        height: 550px;
+    }
+    .palm-tree.left{
+      left: -363px;
+    }
+    .palm-tree.right{
+      right: -363px;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    .palm-tree.right {
+    right: -324px;
+  }
+  .palm-tree.left {
+    left: -324px;
+  }
+    .palm-tree{
+      scale: 0.5;
+      height: 400px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .palm-tree.right {
+    right: -324px;
+  }
+  .palm-tree.left {
+    left: -324px;
+  }
+    .palm-tree{
+      scale: 0.7;
+      height: 349px;
+    }
+  }
+.logo {
+    z-index: -2;
+    display: grid;
+    place-items: center;
+    min-width: 50%;
+    height: 200px;
+   }
+   .logo *{
+    width: 50%;
+   }
+   .logo *:first-child {
+    width: 100%;
+   }
+   .label {
+   position:relative;
+   top: -121%;
+  }
+.btn{
+    position: absolute;
+    top: 52vh;
+    width: 300px;
+    height: 80px;
+    font-size: 50px;
+    background-color: white;
+    border-radius: 30px;
+    font-family: Adumu;
+    box-shadow: 0 10px rgba(0, 0, 0, 0.5);
+    border-width: 0;
+}
+@font-face {
+    font-family: Adumu;
+    src: url(../animaldle/fonts/Adumu.ttf);
+ }
