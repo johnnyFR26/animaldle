@@ -13,7 +13,7 @@
     justify-content: center;
     margin: -8px;
     padding: 20px;
-    z-index: 5;
+    z-index: 6;
   }
 section {
     position: absolute;
@@ -32,7 +32,7 @@ section {
   }
   section .wave.wave1{
     animation: animate 10s linear infinite;
-    z-index: 3;
+    z-index: 4;
     opacity: 1;
     animation-delay: 0s;
     bottom: 0;
@@ -44,7 +44,7 @@ section {
   }
   section .wave.wave2{
     animation: animate2 4s linear infinite;
-    z-index: 2;
+    z-index: 3;
     opacity: 0.5;
     animation-delay: -5s;
     bottom: 30px;
@@ -60,7 +60,7 @@ section {
     object-fit:none;
     object-position: 0 40px;
     scale: 0.3;
-    z-index: 1;
+    z-index: 2;
   }
   .palm-tree.right {
     right: -386px;
@@ -112,7 +112,7 @@ section {
     }
   }
 .logo {
-    z-index: 4;
+    z-index: 5;
     display: grid;
     place-items: center;
     min-width: 50%;
@@ -144,3 +144,4 @@ section {
     font-family: Adumu;
     src: url(../../assets/fonts/Adumu.ttf);
  }
+canvas {display: block; position:absolute;z-index: 1;}
