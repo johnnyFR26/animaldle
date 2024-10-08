@@ -1,0 +1,180 @@
+body{
+    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    margin: -8px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caixa{
+    display: grid;
+    background-color: white;
+    height: 50vh;
+    width: 50vh;
+    border-radius: 35px;
+    border-style: solid;
+    border-width: 5px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+h1{
+    padding-top: 50px;
+    font-family: Adumu;
+    text-align: center;
+}
+.campos{
+    padding-top: 25px;
+    padding-left: 25px;
+}
+.campos *{
+    border-radius: 35px;
+    border-color: black;
+    width: 90%;
+    height: 20%;
+    margin-bottom: 40px;
+    border-style: solid;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+}
+.campos *::placeholder{
+    font-size: 125%;
+    font-family: Adumu;
+    color: black;
+    padding-left: 10px;
+}
+.bogas{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.bogas *{
+    font-size: 125%;
+    transition: 0.25s;
+    font-family: Adumu;
+    background-color: #049b3b;
+    width: 30%;
+    height: 100%;
+    border-radius: 35px;
+    border-color: #04742c;
+    border-style: solid;
+    box-shadow: 0 5px #04742c;
+}
+.bogas *:hover{
+    color: white;
+    transition: 0.25s;
+    scale: 1.1;
+    background-color: #04742c;
+    box-shadow: 0 5px #012e11;
+}
+.aya{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.nigs{
+    padding-top: 15px;
+    transition: 0.25s;
+    color: black;
+    font-family: Adumu;
+}
+.nigs:hover{
+    transition: 0.25s;
+    color: blue;
+}
+
+@font-face {
+    font-family: Adumu;
+    src: url(../../assets/fonts/Adumu.ttf);
+ }
+
+canvas {display: block; position:absolute;z-index: 0;}body{
+    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    margin: -8px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caixa{
+    display: grid;
+    background-color: white;
+    height: 50vh;
+    width: 50vh;
+    border-radius: 35px;
+    border-style: solid;
+    border-width: 5px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+h1{
+    padding-top: 50px;
+    font-family: Adumu;
+    text-align: center;
+    margin: 0;
+}
+.campos{
+    padding-top: 25px;
+    padding-left: 25px;
+}
+.campos *{
+    border-radius: 35px;
+    border-color: black;
+    width: 90%;
+    height: 20%;
+    margin-bottom: 40px;
+    border-style: solid;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+}
+.campos *::placeholder{
+    font-size: 125%;
+    font-family: Adumu;
+    color: black;
+    padding-left: px;
+}
+.bogas{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.bogas *{
+    font-size: 125%;
+    transition: 0.25s;
+    font-family: Adumu;
+    background-color: #049b3b;
+    width: 30%;
+    height: 100%;
+    border-radius: 35px;
+    border-color: #04742c;
+    border-style: solid;
+    box-shadow: 0 5px #04742c;
+}
+.bogas *:hover{
+    color: white;
+    transition: 0.25s;
+    scale: 1.1;
+    background-color: #04742c;
+    box-shadow: 0 5px #012e11;
+}
+.aya{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.nigs{
+    padding-top: 15px;
+    transition: 0.25s;
+    color: black;
+    font-family: Adumu;
+}
+.nigs:hover{
+    transition: 0.25s;
+    color: blue;
+}
+
+@font-face {
+    font-family: Adumu;
+    src: url(../../assets/fonts/Adumu.ttf);
+ }
+
+canvas {display: block; position:absolute;z-index: 0;}
