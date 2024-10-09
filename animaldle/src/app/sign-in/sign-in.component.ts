@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
@@ -8,6 +9,15 @@ import { AfterViewInit, Component } from '@angular/core';
   styleUrl: './sign-in.component.scss'
 })
   export class SignInComponent implements AfterViewInit {
+
+    user = {
+      phone: '',
+      name: '',
+      password:'',
+      gender: ''
+    }
+
+    constructor( private UserService: UserService){}
   
     private ctx!: CanvasRenderingContext2D;
     private width: number = window.innerWidth;
