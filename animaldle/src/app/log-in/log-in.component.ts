@@ -91,7 +91,6 @@ import { RouterLink } from '@angular/router';
       }
       this.y -= this.speed / 0.1;
       this.angle = Math.cos(this.y / 20);
-      //console.log(this.angle);
   
       ctx.save();
       ctx.translate(this.x, this.y);
