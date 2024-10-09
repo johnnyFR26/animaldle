@@ -1,13 +1,18 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss'
 })
   export class LogInComponent implements AfterViewInit {
+
+    cadastrar(): void{
+      console.log('CLICADO')
+    }
   
     private ctx!: CanvasRenderingContext2D;
     private width: number = window.innerWidth;
@@ -65,7 +70,7 @@ import { AfterViewInit, Component } from '@angular/core';
       }
       this.y -= this.speed / 0.1;
       this.angle = Math.cos(this.y / 20);
-      console.log(this.angle);
+      //console.log(this.angle);
   
       ctx.save();
       ctx.translate(this.x, this.y);

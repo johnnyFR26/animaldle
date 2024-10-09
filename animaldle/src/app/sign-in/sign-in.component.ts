@@ -47,7 +47,7 @@ import { AfterViewInit, Component } from '@angular/core';
   
     constructor(private rand: (m: number, M: number) => number, width: number, height: number) {
       this.IMG = new Image();
-      this.IMG.src = '../../assets/public/kratos.jfif';
+      this.IMG.src = '../../assets/public/foia.png';
       this.start(width, height);
     }
   
@@ -65,7 +65,6 @@ import { AfterViewInit, Component } from '@angular/core';
       }
       this.y -= this.speed / 0.1;
       this.angle = Math.cos(this.y / 20);
-      console.log(this.angle);
   
       ctx.save();
       ctx.translate(this.x, this.y);
