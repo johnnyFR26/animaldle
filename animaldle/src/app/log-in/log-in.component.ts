@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -9,6 +10,26 @@ import { RouterLink } from '@angular/router';
   styleUrl: './log-in.component.scss'
 })
   export class LogInComponent implements AfterViewInit {
+
+    constructor(private UserService: UserService) {}
+
+    users = []
+
+    ngOnInit(): void {
+      this.loadUsers()
+    }
+
+    loadUsers(): void {
+      this.UserService.getUsers().subscribe(
+        (users: any) => {
+          this.users = users;
+          console.table(users)
+        },
+        (error: any) => {
+          console.log('Error loading clients:', error);
+        }
+      );
+    }
 
     cadastrar(): void{
       console.log('CLICADO')
