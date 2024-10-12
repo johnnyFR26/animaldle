@@ -1,10 +1,11 @@
+import { FormsModule } from '@angular/forms';
 import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
 })
@@ -12,12 +13,29 @@ import { AfterViewInit, Component } from '@angular/core';
 
     user = {
       phone: '',
-      name: '',
+      fullName: '',
       password:'',
       gender: ''
     }
 
+    verifyPassword: string = ''
+
+    veryfyPasswordMatch(): boolean {
+      return this.user.password === this.verifyPassword
+    }
+
     constructor( private UserService: UserService){}
+
+    cadastrar(): void {
+      this.UserService.createUser(this.user).subscribe(
+        (response: any) => {
+          console.log(response);
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      )
+    }
   
     private ctx!: CanvasRenderingContext2D;
   private width: number = window.innerWidth;

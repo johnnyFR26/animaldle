@@ -3,6 +3,13 @@
     <div class="caixa">
         <h1>Criar Conta</h1>
         <div class="campos">
+            <input type="number" placeholder="Telefone" name="phone" [(ngModel)]="user.phone">
+            <input type="text" placeholder="Nome" name="name" [(ngModel)]="user.fullName">
+            <input type="password" placeholder="Senha" name="password" [(ngModel)]="user.password">
+            <input type="password" placeholder="Confirme sua senha" name="Cpassword" [(ngModel)]="verifyPassword">
+            @if (!veryfyPasswordMatch()) {
+                <p class="nigs">As senhas precisam ser iguais</p>
+            }
             <label labelfor="email">Telefone:</label>
             <input type="email" placeholder="(13) 99705-4308" name="email">
         </div><div class="campos">
@@ -20,7 +27,7 @@
             <input type="radio" value="others" name="sex"><label>Outros</label>
         </div>
         <div class="bogas">
-            <button>Criar conta</button>
+            <button [disabled]="!veryfyPasswordMatch()" (click)="cadastrar()">Criar conta</button>
         </div>
     </div>
 </body>
