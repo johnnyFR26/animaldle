@@ -66,8 +66,8 @@ class Item {
   constructor(private rand: (m: number, M: number) => number, width: number, height: number, colunas: number) {
     this.IMG = new Image();
     this.IMG.src = '../../assets/public/foia.png';
-    Item.w = this.IMG.width*(width/1536)*0.07;
-    Item.h = this.IMG.height*(width/1536)*0.07/4;
+    Item.w = 3000*(width/1536)*0.07;
+    Item.h = 3000*(width/1536)*0.07/4;
     this.start(width, height, colunas);
   }
 
