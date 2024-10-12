@@ -3,8 +3,11 @@
     <div class="caixa">
         <h1>Log-in</h1>
         <div class="campos">
-            <input type="email" placeholder="Email" name="email"><br>
-            <input type="password" placeholder="Senha" name="password">
+            <label labelfor="email">Email:</label>
+            <input type="email" placeholder="exemplo@email.com" name="email" id="email">
+        </div><div class="campos">
+            <label labelfor="password">Senha:</label>
+            <input type="password" placeholder="Senha123!" name="password" id="password">
         </div>
         <div class="bogas">
             <button>Entrar</button>
@@ -12,7 +15,7 @@
         <div class="aya">
             <a>
                  <p class="nigs">Esqueci minha senha</p>
-                 <p (click)="cadastrar()" class="nigs" routerLink="/signIn" class="nigs">Ainda não tem uma conta? cadastrar</p>
+                 <p (click)="cadastrar()" class="nigs" routerLink="/signIn" class="nigs">Ainda não tem uma conta? cadastrar!</p>
             </a>
         </div>
     </div>
