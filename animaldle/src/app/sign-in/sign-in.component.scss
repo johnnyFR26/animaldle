@@ -33,7 +33,23 @@ h1{
     border-style: solid;
     box-shadow: 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
+    position: relative;
 }
+.modal {
+    width: 80px;
+    height: 50px;
+    color:white;
+    background-color: #ff3131;
+    border-radius: 5px !important;
+    padding: 5px;
+    position:absolute;
+    font-size: 80% !important;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    top:-40px;
+    right: 0;
+  }
 .campos * {
     padding-left: 10px;
     font-size: 100%;
