@@ -1,0 +1,83 @@
+canvas {
+    display: block;
+    position:absolute;
+}
+body{
+    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    margin: -8px;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+#animalInput{
+    margin: 5vh;
+    width: 40%;
+    min-width: 260px;
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: 20px;
+    border-style: none;
+    z-index: 1;
+}
+h1{
+    font-family: Adumu;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+}
+.game{
+    background-color: rgba(0,0,0,40%);
+    z-index: 1;
+    width: 50%;
+    padding: 10px;
+    min-width: 300px;
+    top: 30px;
+    border-radius: 20px;
+}
+.guesses{
+    height: 60vh;
+    overflow: auto;
+}
+.guesses::-webkit-scrollbar{
+    width: 20px;
+    border-radius: 10px;
+    background-color: #aaa;
+}
+.guesses::-webkit-scrollbar-thumb {
+    background: #fff;
+    transition: 0.2s;
+    border-radius: 10px;
+    background-clip: content-box;
+    border: 3px solid transparent;
+}
+.line{
+    display:grid; 
+    align-items: center;
+    margin: 10px 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.img{
+    border-radius: 20px;
+    border-style: dashed;
+    width:75%;
+    height: 0;
+    padding-bottom:75%;
+    background-color:#b7b7b7;
+    text-align: center;
+}
+.description{
+    border-radius: 20px;
+    width:80%;
+    height: 0;
+    padding-bottom:80%;
+    background-color:#12a93b;
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    text-align: center;
+    font-family: Adumu;
+}
+@font-face {
+    font-family: Adumu;
+    src: url(../../assets/fonts/Adumu.ttf);
+ }
