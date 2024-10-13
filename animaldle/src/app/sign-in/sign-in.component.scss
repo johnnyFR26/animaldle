@@ -35,6 +35,9 @@ h1{
     display: flex;
     position: relative;
 }
+.campos:focus-within{
+    border-color: #049b3b;
+}
 .modal {
     width: 80px;
     height: 50px;
@@ -56,19 +59,44 @@ h1{
     border-radius: 35px;
     font-family: Adumu;
 }
-label {
+.campos .label {
     align-self: center;
+    background-color: white;
+    position: absolute;
+    padding: 0 !important;
+    left: 10px;
+    border-radius: 0 !important;
+    transition: .4s ease-in-out;
 }
 input {
     border-style: none;
     flex-grow: 1;
     width: 30%;
 }
-.input::placeholder{
+input::placeholder{
     font-size: 100%;
     font-family: Adumu;
-    color: black;
-    padding-left: 10px;
+    color: rgba(135, 135, 135, 0);
+    transition: .3s;
+}
+input:focus{
+    outline:0;
+}
+input:focus::placeholder{
+    transition: .3s;
+    color: rgba(135, 135, 135,100);
+}
+.sus *::placeholder{
+    color: rgb(135, 135, 135) !important;
+    transition: .3s;
+}
+input:focus + .label, input:not(input:placeholder-shown) + .label {
+    transform: translate(-2px,-109%);
+    border-style: none solid solid none;
+    border-radius: 4px !important;
+    padding: 0 2px !important;
+    font-size: 90%;
+    transition: .4s ease-in-out;
 }
 .bogas{
     width: 100%;
