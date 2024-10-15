@@ -1,32 +1,37 @@
 import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss'
 })
   export class LogInComponent implements AfterViewInit {
 
-    constructor(private UserService: UserService) {}
+    constructor(private UserService: UserService, private router: Router) {}
 
     users = []
+    user = {
+      phone: '',
+      password: ''
+    }
 
     ngOnInit(): void {
-      this.loadUsers()
     }
 
     loadUsers(): void {
-      this.UserService.getUsers().subscribe(
+      this.UserService.login(this.user).subscribe(
         (users: any) => {
-          this.users = users;
           console.table(users)
+          localStorage.setItem("token", users.token)
+          this.router.navigateByUrl('/game')
         },
         (error: any) => {
-          console.log('Error loading clients:', error);
+          console.log('Invalid credentials:', error);
         }
       );
     }
