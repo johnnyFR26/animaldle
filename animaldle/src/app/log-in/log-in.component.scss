@@ -140,12 +140,13 @@ input:focus + .label, input:not(input:placeholder-shown) + .label {
     box-shadow: 0 5px #012e11;
 }
 .aya{
+    width: 90%;
     position: relative;
     display: flex;
-    justify-content: center;
-    justify-self: flex-start;
+    justify-content: start;
 }
 .aya * {
+    width: 100%;
     font-size: 14px;
 }
 .nigs{

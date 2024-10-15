@@ -140,6 +140,11 @@ section {
     font-family: Adumu;
     box-shadow: 0 10px rgba(0, 0, 0, 0.5);
     border-width: 0;
+    transition: .2s;
+}
+.btn:hover{
+  transition: .2s;
+  scale: 1.1;
 }
 @font-face {
     font-family: Adumu;
