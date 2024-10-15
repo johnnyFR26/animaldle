@@ -1,42 +1,50 @@
-body{
-    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+body{    
+    background-image: linear-gradient(to right, rgb(6, 69, 23) 0%, #0e6a24 25%, #0e6a24 75%, rgb(6, 69, 23) 100%);
     margin: -8px;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    letter-spacing: 1px;
 }
 .caixa{
     display: grid;
+    align-content: space-evenly;
     justify-items: center;
     background-color: white;
-    height: 70%;
-    width: 30%;
+    width: 40%;
     min-width: 300px;
     border-radius: 35px;
-    border-style: solid;
-    border-width: 5px;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px #737373;
     z-index: 1;
 }
 h1{
-    padding-top: 50px;
+    font-size: 50px;
     font-family: Adumu;
     text-align: center;
+    margin: 20px;
+    height: 60px;
 }
 .campos{
+    width: 100%;
+    justify-self: center;
+    display: grid;
+    position: relative;
+    height: 140px;
+}
+.campo{
     justify-self: center;
     border-radius: 35px;
     border-color: black;
     width: 90%;
-    margin: 20px 0;
+    height: 40px;
     border-style: solid;
     box-shadow: 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
     position: relative;
 }
-.campos:focus-within{
+.campo:focus-within{
     border-color: #049b3b;
 }
 .modal {
@@ -54,20 +62,20 @@ h1{
     top:-40px;
     right: 0;
   }
-.campos * {
+.campo * {
     padding-left: 10px;
     font-size: 100%;
     border-radius: 35px;
     font-family: Adumu;
 }
-.campos .label {
+.campo .label {
     align-self: center;
     background-color: white;
     position: absolute;
     padding: 0 !important;
     left: 10px;
     border-radius: 0 !important;
-    transition: .4s ease-in-out;
+    transition: .3s ease-in-out;
 }
 input {
     border-style: none;
@@ -78,18 +86,18 @@ input::placeholder{
     font-size: 100%;
     font-family: Adumu;
     color: rgba(135, 135, 135, 0);
-    transition: .3s;
+    transition: .2s;
 }
 input:focus{
     outline:0;
 }
 input:focus::placeholder{
-    transition: .3s;
+    transition: .2s;
     color: rgba(135, 135, 135,100);
 }
 .sus *::placeholder{
     color: rgb(135, 135, 135) !important;
-    transition: .3s;
+    transition: .2s;
 }
 input:focus + .label, input:not(input:placeholder-shown) + .label {
     transform: translate(-2px,-109%);
@@ -97,22 +105,27 @@ input:focus + .label, input:not(input:placeholder-shown) + .label {
     border-radius: 4px !important;
     padding: 0 2px !important;
     font-size: 90%;
-    transition: .4s ease-in-out;
+    transition: .2s ease-in-out;
 }
-
+.juntos{
+    width: 90%;
+    justify-self: center;
+    display: grid;
+    position: relative;
+}
 .bogas{
-    width: 100%;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: start;
+    justify-self: center;
 }
 .bogas *{
     font-size: 125%;
     transition: 0.25s;
     font-family: Adumu;
-    background-color: #049b3b;
-    width: 30%;
+    background-color: #00de51;
+    width: 120px;
     height: 100%;
     border-radius: 35px;
     border-color: #04742c;
@@ -127,12 +140,13 @@ input:focus + .label, input:not(input:placeholder-shown) + .label {
     box-shadow: 0 5px #012e11;
 }
 .aya{
-    width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
+    justify-self: flex-start;
 }
 .aya * {
-    width: 90%;
+    font-size: 14px;
 }
 .nigs{
     padding-top: 15px;

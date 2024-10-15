@@ -1,30 +1,39 @@
 <body>
     <canvas id="myCanvas"></canvas>
-    <div class="caixa">
-        <h1>Criar Conta</h1>
-        <div class="campos">
-            <input type="number" placeholder="(13) 99705-4308" name="phone" [(ngModel)]="user.phone">
-            <label class="label">Telefone</label>
-        </div><div class="campos">
-            <input type="text" placeholder="nome exemplo da silva" name="name" [(ngModel)]="user.fullName">
-            <label class="label">Nome</label>
-        </div><div class="campos">
-            <input type="password" placeholder="Senhaexemplo.123" name="password" [(ngModel)]="user.password">
-            <label class="label">Senha</label>
-            @if (!veryfyPasswordMatch()) {
-                <div class="modal">As senhas precisam ser iguais</div>
-            }
-        </div><div class="campos sus">
-            <input type="password" placeholder="Confirme sua senha" name="Cpassword" [(ngModel)]="verifyPassword">
+        <div class="caixa">
+            <h1>Criar Conta</h1>
+            <div class="campos">
+                <div class="campo">
+                    <input type="number" placeholder="(13) 99705-4308" name="phone" [(ngModel)]="user.phone">
+                    <label class="label">Telefone</label>
+                </div><div class="campo">
+                    <input type="text" placeholder="nome exemplo da silva" name="name" [(ngModel)]="user.fullName">
+                    <label class="label">Nome</label>
+                </div><div class="campo">
+                    <input type="password" placeholder="Senhaexemplo.123" name="password" [(ngModel)]="user.password">
+                    <label class="label">Senha</label>
+                    @if (!veryfyPasswordMatch()) {
+                        <div class="modal">As senhas precisam ser iguais</div>
+                    }
+                </div><div class="campo sus">
+                    <input type="password" placeholder="Confirme sua senha" name="Cpassword" [(ngModel)]="verifyPassword">
+                </div>
+            </div>
+            
+            <div class="trotos">
+                <div class="radio">
+                    <input type="radio" value="masculino" name="sex">
+                    <span class="checkmark">♂️?</span>
+                </div><div class="radio">
+                    <input type="radio" value="Feminino" name="sex">
+                    <span class="checkmark">♀️?</span>
+                </div><div class="radio">
+                    <input type="radio" value="others" name="sex">
+                    <span class="checkmark">👽?</span>
+                </div>
+            </div>
+            <div class="bogas">
+                <button [disabled]="!veryfyPasswordMatch()" (click)="cadastrar()">Criar conta</button>
+            </div>
         </div>
-        
-        <div class="trotos">
-            <input type="radio" value="masculino" name="sex"><label>Masculino</label>
-            <input type="radio" value="Feminino" name="sex"><label>Feminino</label>
-            <input type="radio" value="others" name="sex"><label>Outros</label>
-        </div>
-        <div class="bogas">
-            <button [disabled]="!veryfyPasswordMatch()" (click)="cadastrar()">Criar conta</button>
-        </div>
-    </div>
 </body>

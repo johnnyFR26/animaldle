@@ -1,22 +1,26 @@
 <body>
     <canvas id="myCanvas"></canvas>
-    <div class="caixa">
-        <h1>Log-in</h1>
-        <div class="campos">
-            <input type="email" placeholder="exemplo@email.com" name="email" id="email">
-            <label class="label">Email:</label>
-        </div><div class="campos">
-            <input type="password" placeholder="Senha123!" name="password" id="password">
-            <label class="label">Senha:</label>
+        <div class="caixa">
+            <h1>Log-in</h1>
+            <div class="campos">
+                <div class="campo">
+                    <input type="email" placeholder="exemplo@email.com" name="email" id="email">
+                    <label class="label">Email:</label>
+                </div><div class="campo">
+                    <input type="password" placeholder="Senha123!" name="password" id="password">
+                    <label class="label">Senha:</label>
+                </div>
+            </div>
+            <div class="juntos">
+                <div class="bogas">
+                    <button>Entrar</button>
+                </div>
+                <div class="aya">
+                    <a>
+                        <p class="nigs">Esqueci minha senha</p>
+                        <p (click)="cadastrar()" class="nigs" routerLink="/signIn" class="nigs">Ainda não tenho uma conta</p>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="bogas">
-            <button>Entrar</button>
-        </div>
-        <div class="aya">
-            <a>
-                 <p class="nigs">Esqueci minha senha</p>
-                 <p (click)="cadastrar()" class="nigs" routerLink="/signIn" class="nigs">Ainda não tem uma conta? cadastrar!</p>
-            </a>
-        </div>
-    </div>
 </body>

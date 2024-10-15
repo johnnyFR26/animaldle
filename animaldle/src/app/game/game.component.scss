@@ -1,19 +1,23 @@
 canvas {
     display: block;
     position:absolute;
+    z-index: 0;
 }
 body{
-    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    background-image: linear-gradient(to right, rgb(6, 69, 23) 0%, #0e6a24 25%, #0e6a24 75%, rgb(6, 69, 23) 100%);
     margin: -8px;
-    display: flex;
+    letter-spacing: 1px;
     height: 100vh;
+    position: relative;
+    z-index: 1;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
 #animalInput{
     margin: 5vh;
     width: 40%;
-    min-width: 260px;
+    min-width: 200px;
     padding: 10px;
     padding-left: 40px;
     border-radius: 20px;

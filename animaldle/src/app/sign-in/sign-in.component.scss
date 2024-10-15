@@ -1,41 +1,49 @@
 body{
-    background-image: linear-gradient(to right, hsl(136, 80%, 20%) 0%, #159532 25%, #159532 75%, #0a5b20 100%);
+    background-image: linear-gradient(to right, rgb(6, 69, 23) 0%, #0e6a24 25%, #0e6a24 75%, rgb(6, 69, 23) 100%);
     margin: -8px;
     height: 100vh;
     display: flex;
+    letter-spacing: 1px;
     justify-content: center;
     align-items: center;
 }
 .caixa{
     display: grid;
+    align-content: space-evenly;
     justify-items: center;
     background-color: white;
-    height: 70vh;
-    width: 30vw;
+    width: 40%;
     min-width: 300px;
     border-radius: 35px;
-    border-style: solid;
-    border-width: 5px;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px #737373;
     z-index: 1;
 }
 h1{
-    padding-top: 50px;
+    font-size: 40px;
     font-family: Adumu;
-    margin: 0;
+    text-align: center;
+    margin: 20px;
+    height: 60px;
 }
 .campos{
+    width: 100%;
+    justify-self: center;
+    display: grid;
+    position: relative;
+    height: 250px;
+}
+.campo{
     justify-self: center;
     border-radius: 35px;
     border-color: black;
     width: 90%;
-    margin: 20px 0;
+    height: 40px;
     border-style: solid;
     box-shadow: 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
     position: relative;
 }
-.campos:focus-within{
+.campo:focus-within{
     border-color: #049b3b;
 }
 .modal {
@@ -53,20 +61,20 @@ h1{
     top:-40px;
     right: 0;
   }
-.campos * {
+.campo * {
     padding-left: 10px;
     font-size: 100%;
     border-radius: 35px;
     font-family: Adumu;
 }
-.campos .label {
+.campo .label {
     align-self: center;
     background-color: white;
     position: absolute;
     padding: 0 !important;
     left: 10px;
     border-radius: 0 !important;
-    transition: .4s ease-in-out;
+    transition: .3s ease-in-out;
 }
 input {
     border-style: none;
@@ -99,25 +107,19 @@ input:focus + .label, input:not(input:placeholder-shown) + .label {
     transition: .4s ease-in-out;
 }
 .bogas{
-    width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: start;
-}
-.trotos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    font-family: Adumu;
+    justify-self: center;
+    margin: 30px;
 }
 .bogas *{
     font-size: 125%;
     transition: 0.25s;
     font-family: Adumu;
-    background-color: #049b3b;
-    width: 30%;
+    background-color: #00de51;
+    width: 180px;
     height: 100%;
     border-radius: 35px;
     border-color: #04742c;
@@ -131,9 +133,63 @@ input:focus + .label, input:not(input:placeholder-shown) + .label {
     background-color: #04742c;
     box-shadow: 0 5px #012e11;
 }
+.trotos{
+    display: grid;
+    width: 90%;
+    height: 40px;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-family: Adumu;
+}
+.radio {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 12px 10px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .radio input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkmark {
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 35px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    border: #000 solid;
+    text-align: center;
+  }
+  .radio:hover input ~ .checkmark {
+    background-color: #eee;
+  }
+  .radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+    color: white;
+  }
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .radio input:checked ~ .checkmark:after {
+    display: block;
+  }
 
 @font-face {
     font-family: Adumu;
     src: url(../../assets/fonts/Adumu.ttf);
  }
  canvas {display: block; position:absolute;z-index: 1;}
+ 
