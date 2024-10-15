@@ -3,19 +3,19 @@
     <div class="caixa">
         <h1>Log-in</h1>
         <div class="campos">
-            <input type="email" placeholder="exemplo@email.com" name="email" id="email">
+            <input type="email" placeholder="exemplo@email.com" name="email" [(ngModel)]="user.phone">
             <label class="label">Email:</label>
         </div><div class="campos">
-            <input type="password" placeholder="Senha123!" name="password" id="password">
+            <input type="password" placeholder="Senha123!" name="password" [(ngModel)]="user.password">
             <label class="label">Senha:</label>
         </div>
         <div class="bogas">
-            <button>Entrar</button>
+            <button (click)="loadUsers()">Entrar</button>
         </div>
         <div class="aya">
             <a>
                  <p class="nigs">Esqueci minha senha</p>
-                 <p (click)="cadastrar()" class="nigs" routerLink="/signIn" class="nigs">Ainda não tem uma conta? cadastrar!</p>
+                 <p class="nigs" routerLink="/signIn" class="nigs">Ainda não tem uma conta? cadastrar!</p>
             </a>
         </div>
     </div>
