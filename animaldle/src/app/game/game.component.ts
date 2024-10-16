@@ -76,7 +76,6 @@ class Item {
     Item.previousWidth = this.x;
     this.angle = this.rand(0, Math.PI * 2);
     this.speed = this.rand(0.05, 0.15);
-    console.log("x= "+this.x+"\ny= "+this.y)
   }
 
   public move(ctx: CanvasRenderingContext2D): void {
