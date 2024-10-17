@@ -104,6 +104,7 @@ export class GameComponent implements AfterViewInit {
       for(let i = 0; i < guessWords.length;i++){
         for(let j = 0; j < randomWords.length;j++){
           if (randomWords[j].includes(guessWords[i]) && guessWords[i].length > 2){
+            console.log()
             bool = true;
           }
         }

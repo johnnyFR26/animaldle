@@ -88,7 +88,7 @@ h1{
 }
 .game{
     z-index: 1;
-    width: 50%;
+    width: 80%;
     padding: 10px;
     min-width: 300px;
     top: 30px;
@@ -114,7 +114,8 @@ h1{
 }
 .line{
     display:grid; 
-    align-items: center;
+    align-items: stretch;
+    height: 100px;
     margin: 10px 0;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
@@ -128,15 +129,17 @@ h1{
     text-align: center;
 }
 .description{
-    border-radius: 20px;
+    border-radius: 5px;
     width:80%;
-    height: 0;
-    padding-bottom:80%;
+    margin: 5px;
+    min-width: 100px;
+    padding:5px;
     display: flex;
     justify-content: center;
-    align-items:baseline;
     text-align: center;
     font-family: Adumu;
+    font-size: 100%;
+
 }
 .certo{
     background-color:#12a93b;
