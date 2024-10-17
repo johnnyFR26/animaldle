@@ -98,6 +98,8 @@ h1{
 }
 .guesses{
     height: 60vh;
+    border-radius: 20px;
+    background-color: #f3f3f3;
     overflow: auto;
 }
 .guesses::-webkit-scrollbar{
@@ -118,6 +120,16 @@ h1{
     height: 100px;
     margin: 10px 0;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    font-family: Adumu;
+    text-align: center;
+}
+.names{
+    align-self: flex-end;
+    width:80%;
+    margin: 5px;
+    min-width: 100px;
+    padding:5px;
+    font-size: 100%;
 }
 .img{
     border-radius: 20px;

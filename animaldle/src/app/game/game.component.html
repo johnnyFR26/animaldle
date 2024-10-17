@@ -13,6 +13,15 @@
         <div class="game">
             <h1>Numero de tentativas: <a [textContent]="animalGuessed.length"></a></h1>
             <div class="guesses">
+                <div class="line" style="height: 20px; margin-bottom: 40px;">
+                    <div class="names"> Nome </div>
+                    <div class="names">Habitat </div>
+                    <div class="names">Filo </div>
+                    <div class="names">Estado de conservação </div>
+                    <div class="names">Dieta </div>
+                    <div class="names">Método de reprodução </div>
+                    <div class="names">Classe </div>
+                </div>
                 @for (try of animalGuessed; track $index) {
                     <div class="line">
                         <div class="description" [class]="verifyCharacteristic(try, 'name')" [textContent]="getCharacteristic(try, 'name')"> Nome </div>
