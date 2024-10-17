@@ -165,9 +165,9 @@ class Item {
 
   constructor(private rand: (m: number, M: number) => number, width: number, height: number, colunas: number) {
     this.IMG = new Image();
-    this.IMG.src = '../../assets/public/foia'+Math.round(rand(0.5,2.5))+'.png';
-    Item.w = 3000*(width/1536)*0.07*2;
-    Item.h = 3000*(width/1536)*0.07/4/1.5;
+    this.IMG.src = '../../assets/public/foia'+Math.round(rand(0.5,4.5))+'.png';
+    Item.w = 210*(width/1536);
+    Item.h = 210*(width/1536)/4/1.5;
     this.start(width, height, colunas);
   }
 
@@ -200,8 +200,8 @@ class Item {
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.rotate(this.angle);
-    ctx.translate(-this.IMG.width*(ctx.canvas.width/1536)*0.07/2, -this.IMG.height*(ctx.canvas.width/1536)*0.07/2);
-    ctx.drawImage(this.IMG, -Item.w / 2, -Item.h / 2, this.IMG.height*(ctx.canvas.width/1536)*0.07, this.IMG.width*(ctx.canvas.width/1536)*0.07);
+    ctx.translate(-this.IMG.width*(ctx.canvas.width/1536)/2, -this.IMG.height*(ctx.canvas.width/1536)/2);
+    ctx.drawImage(this.IMG, -Item.w / 2, -Item.h / 2, this.IMG.height*(ctx.canvas.width/1536), this.IMG.width*(ctx.canvas.width/1536));
     ctx.restore();
   }
 
