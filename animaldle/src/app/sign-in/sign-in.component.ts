@@ -32,7 +32,7 @@ import { CanvasService } from '../services/leafs.service';
       this.UserService.createUser(this.user).subscribe(
         (response: any) => {
           console.log(response);
-          this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/logIn')
         },
         (error: any) => {
           console.log(error);
