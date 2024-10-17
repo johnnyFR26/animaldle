@@ -1,12 +1,13 @@
 import { FormsModule } from '@angular/forms';
 import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CanvasService } from '../services/leafs.service';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
 })
@@ -25,12 +26,13 @@ import { CanvasService } from '../services/leafs.service';
       return this.user.password === this.verifyPassword
     }
 
-    constructor( private UserService: UserService, private CanvasService: CanvasService){}
+    constructor( private UserService: UserService, private CanvasService: CanvasService, private router: Router){}
 
     cadastrar(): void {
       this.UserService.createUser(this.user).subscribe(
         (response: any) => {
           console.log(response);
+          this.router.navigateByUrl('/login')
         },
         (error: any) => {
           console.log(error);
