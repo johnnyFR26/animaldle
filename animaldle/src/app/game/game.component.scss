@@ -150,6 +150,47 @@ h1{
 .errado{
     background-color: #dd2b2b;
 }
+.ganhou{
+    width: 100%;
+    position:absolute;
+    top: 0;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(0,0,0,40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ganhou div{
+    padding: 10px;
+    width: 300px;
+    height: 60%;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 35px;
+    box-shadow: 0 20px #737373;
+}
+.ganhou div h1{
+    color: #12a93b;
+}
+.ganhou div h2{
+    font-family: adumu;
+}
+.ganhou div p{
+    font-style: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.ganhou div button{
+    color: white;
+    background-color:   #1fe14c;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    left: 130px;
+    font-size: 20px;
+    font-family: adumu;
+    padding:5px;
+}
 @font-face {
     font-family: Adumu;
     src: url(../../assets/fonts/Adumu.ttf);

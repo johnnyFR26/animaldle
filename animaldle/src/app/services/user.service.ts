@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private API_URL: string = 'http://localhost:3333/'
+  private API_URL: string = 'https://api-animaldle.onrender.com/'
 
   constructor(private http: HttpClient) { }
 

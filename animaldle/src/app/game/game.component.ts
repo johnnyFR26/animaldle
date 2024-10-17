@@ -34,6 +34,7 @@ export class GameComponent implements AfterViewInit {
   animalGuessed: Animal[] = [];
   guess = '';
   animalRand!: Animal;
+  win = false;
 
   ngOnInit(): void {
     this.loadAnimals()
@@ -71,15 +72,28 @@ export class GameComponent implements AfterViewInit {
   guessAnimal(animal:any): void {
     this.animalGuessed.unshift(animal);
     this.guess = '';
+    if(animal.name == this.animalRand.name)
+      this.win = true;
   }
 
   getCharacteristic(animal : Object ,type:string) :string {
     const types = type.split('.')
     let value: any = animal;
 
-  for (let key of types) {
-    value = value[key];
+    for (let key of types) {
+      value = value[key];
+    }
+
+    return value;
   }
+
+  randCharacteristic(animal : Object ,type:string) :string {
+    const types = type.split('.')
+    let value: any = animal;
+
+    for (let key of types) {
+      value = value[key];
+    }
 
     return value;
   }
@@ -116,6 +130,10 @@ export class GameComponent implements AfterViewInit {
         return "errado";
       }
     }
+  }
+  
+  reload():void {
+    window.location.reload();
   }
 
 

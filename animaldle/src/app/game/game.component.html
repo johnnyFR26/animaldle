@@ -26,4 +26,19 @@
                 }
             </div>
         </div>
+        @if(win) {
+            <span class="ganhou">
+                <div>
+                    <h1>Você acertou</h1>
+                    <h2>O animal era: <a [textContent]="randCharacteristic(animalRand, 'name')"></a></h2>
+                    <p>Habitats: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Habitat')"></a></p>
+                    <p>Filo: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Filo')"></a></p>
+                    <p>Estado de conservação: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Estado de conservação')"></a></p>
+                    <p>Dieta: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Dieta')"></a></p>
+                    <p>Método de reprodução: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Método de reprodução')"></a></p>
+                    <p>Classe: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Classe')"></a></p>
+                    <button (click)="reload()">Jogar de novo</button>
+                </div>
+            </span>
+        }
 </body>
