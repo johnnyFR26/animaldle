@@ -1,19 +1,29 @@
 <body>
     <canvas id="myCanvas"></canvas>
-        <input id="animalInput" type="text">
-    
+    <div class="input">
+        <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess">
+        @if (guess) {
+            <div class="searchs">
+            @for (search of searchAnimals(guess); track $index) {
+                <span [textContent]="search.name" class="search" (click)="guessAnimal(search)"></span>
+            }
+            </div>
+        }
+    </div>
         <div class="game">
-            <h1>Numero de tentativas: 5</h1>
+            <h1>Numero de tentativas: <a [textContent]="animalGuessed.length"></a></h1>
             <div class="guesses">
-                <div class="line">
-                    <div class="description"> 1 </div>
-                    <div class="description"> 1 </div>
-                    <div class="description"> 2 </div>
-                    <div class="description"> 3 </div>
-                    <div class="description"> 4 </div>
-                    <div class="description"> 5 </div>
-                    <div class="description"> 6 </div>
-                </div>
+                @for (try of animalGuessed; track $index) {
+                    <div class="line">
+                        <div class="description" [class]="verifyCharacteristic(try, 'name')" [textContent]="getCharacteristic(try, 'name')"> Nome </div>
+                        <div class="description" [class]="verifyCharacteristic(try, 'characteristics.Habitat')" [textContent]="getCharacteristic(try, 'characteristics.Habitat')"> Habitat </div>
+                        <div class="description" [class]="verifyCharacteristic(try, 'characteristics.Filo')" [textContent]="getCharacteristic(try, 'characteristics.Filo')"> Filo </div>
+                        <div class="description" [class]="verifyCharacteristic(try, 'characteristics.Estado de conservação')" [textContent]="getCharacteristic(try, 'characteristics.Estado de conservação')"> Estado de conservação </div>
+                        <div class="description" [class]="verifyCharacteristic(try, 'characteristics.Dieta')" [textContent]="getCharacteristic(try, 'characteristics.Dieta')"> Dieta </div>
+                        <div class="description" [class]="verifyCharacteristic(try, 'characteristics.Método de reprodução')" [textContent]="getCharacteristic(try, 'characteristics.Método de reprodução')"> Método de reprodução </div>
+                        <div class="description" [class]="verifyCharacteristic(try, 'characteristics.Classe')" [textContent]="getCharacteristic(try, 'characteristics.Classe')"> Classe </div>
+                    </div>
+                }
             </div>
         </div>
 </body>

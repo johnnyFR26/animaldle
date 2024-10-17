@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
+import { CanvasService } from '../services/leafs.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -24,7 +25,7 @@ import { AfterViewInit, Component } from '@angular/core';
       return this.user.password === this.verifyPassword
     }
 
-    constructor( private UserService: UserService){}
+    constructor( private UserService: UserService, private CanvasService: CanvasService){}
 
     cadastrar(): void {
       this.UserService.createUser(this.user).subscribe(
@@ -36,8 +37,7 @@ import { AfterViewInit, Component } from '@angular/core';
         }
       )
     }
-  
-    private ctx!: CanvasRenderingContext2D;
+  private ctx!: CanvasRenderingContext2D;
   private width: number = window.innerWidth;
   private height: number = window.innerHeight;
   private colunas: number = 0;
@@ -47,7 +47,6 @@ import { AfterViewInit, Component } from '@angular/core';
   private rand(m: number, M: number): number {
     return Math.random() * (M - m) + m;
   }
-
   ngAfterViewInit(): void {
     const canvas = document.getElementById('myCanvas') as HTMLCanvasElement;
     this.ctx = canvas.getContext('2d')!;
@@ -61,14 +60,14 @@ import { AfterViewInit, Component } from '@angular/core';
 
     this.loop();
   }
-
   private loop(): void {
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.items.forEach(item => item.move(this.ctx));
     requestAnimationFrame(() => this.loop());
   }
-}
 
+  
+}
 class Item {
   private x: number = 0;
   private y: number = 0;

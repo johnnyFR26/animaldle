@@ -1,14 +1,123 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AnimalService } from '../services/animal.service';
+import { FormsModule } from '@angular/forms';
+
+interface Animal {
+    id: number,
+    name: string,
+    characteristics: {
+      Habitat: string,
+      Filo: string,
+      "Estado de conservação": string,
+      Dieta: string,
+      "Método de reprodução": string,
+      Classe: string
+    },
+    createdAt: string,
+    updatedAt: string
+}
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements AfterViewInit {
+
+  constructor(private AnimalService: AnimalService) {}
+
+
+  animals: Animal[] = [];
+  animalGuessed: Animal[] = [];
+  guess = '';
+  animalRand!: Animal;
+
+  ngOnInit(): void {
+    this.loadAnimals()
+  }
+  
+  loadAnimals(): void {
+    this.AnimalService.getAnimals().subscribe(
+      (animals: any) => {
+        this.animals = animals.sort((a: Animal, b: Animal) => {
+          if (a.name < b.name) {
+            return -1;
+          } else if (a.name > b.name) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        this.randomAnimal()
+      },
+      (error: any) => {
+        console.log('Invalid credentials:', error);
+      }
+    );
+  }
+
+  randomAnimal(): void {
+    this.animalRand = this.animals[Math.ceil(Math.random()*this.animals.length)];
+    console.log(this.animalRand)
+  }
+
+  searchAnimals(guess:string): any[] {
+    return this.animals.filter((animal: any) => animal.name.toLowerCase().includes(guess.toLowerCase()))
+  }
+
+  guessAnimal(animal:any): void {
+    this.animalGuessed.unshift(animal);
+    this.guess = '';
+  }
+
+  getCharacteristic(animal : Object ,type:string) :string {
+    const types = type.split('.')
+    let value: any = animal;
+
+  for (let key of types) {
+    value = value[key];
+  }
+
+    return value;
+  }
+
+  verifyCharacteristic(animal : Object ,type: string): string {
+    const types = type.split('.')
+    let guessed: any = animal;
+    let random: any = this.animalRand;
+
+  for (let key of types) {
+    guessed = guessed[key];
+    random = random[key];
+  }
+  guessed = guessed.toLowerCase();
+  random = random.toLowerCase();
+    if(guessed == random){
+      return "certo";
+    } else {
+      let guessWords = guessed.split(" ");
+      let randomWords = random.split(" ");
+      let bool = false;
+      for(let i = 0; i < guessWords.length;i++){
+        for(let j = 0; j < randomWords.length;j++){
+          if (randomWords[j].includes(guessWords[i]) && guessWords[i].length > 2){
+            bool = true;
+          }
+        }
+      }
+      if (bool){
+        return "meio";
+      }
+      else{
+        return "errado";
+      }
+    }
+  }
+
+
   private ctx!: CanvasRenderingContext2D;
   private width: number = window.innerWidth;
   private height: number = window.innerHeight;
@@ -56,8 +165,8 @@ class Item {
 
   constructor(private rand: (m: number, M: number) => number, width: number, height: number, colunas: number) {
     this.IMG = new Image();
-    this.IMG.src = '../../assets/public/foia'+Math.round(rand(0.5,5.5))+'.png';
-    Item.w = 3000*(width/1536)*0.07;
+    this.IMG.src = '../../assets/public/foia'+Math.round(rand(0.5,2.5))+'.png';
+    Item.w = 3000*(width/1536)*0.07*2;
     Item.h = 3000*(width/1536)*0.07/4/1.5;
     this.start(width, height, colunas);
   }
