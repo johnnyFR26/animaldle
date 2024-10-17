@@ -115,7 +115,7 @@ h1{
 .line{
     display:grid; 
     align-items: stretch;
-    height: 100px;
+    min-height: 100px;
     margin: 10px 0;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
