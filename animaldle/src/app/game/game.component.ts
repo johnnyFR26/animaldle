@@ -35,9 +35,19 @@ export class GameComponent implements AfterViewInit {
   guess = '';
   animalRand!: Animal;
   win = false;
+  howToPlay=false;
+  tela=1;
 
   ngOnInit(): void {
-    this.loadAnimals()
+    this.howToPlay=true;
+    this.loadAnimals();
+  }
+
+  changeScreen():void{
+    this.tela++;
+    if(this.tela==3){
+      this.howToPlay=false;
+    }
   }
   
   loadAnimals(): void {

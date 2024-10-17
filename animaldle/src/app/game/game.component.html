@@ -1,7 +1,7 @@
 <body>
     <canvas id="myCanvas"></canvas>
     <div class="input">
-        <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess">
+        <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess" placeholder="Insira o nome do animal">
         @if (guess) {
             <div class="searchs">
             @for (search of searchAnimals(guess); track $index) {
@@ -38,6 +38,41 @@
                     <p>Método de reprodução: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Método de reprodução')"></a></p>
                     <p>Classe: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Classe')"></a></p>
                     <button (click)="reload()">Jogar de novo</button>
+                </div>
+            </span>
+        }
+        @if(howToPlay) {
+            <span class="como">
+                <div>
+                    <h1>Como Jogar?</h1>
+                    @if (tela==1) {
+                        <span class="input" style="background-color: #ddd; width: 80%;margin: -20px;justify-self: center;">
+                            <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess" placeholder="Insira o nome do animal" disabled="true">
+                        </span>
+                        <p>Insira um nome de um animal e as informações deles serão mostradas ​dentro de quadrados coloridos, dependendo do animal secreto os ​quadrados terão cores diferentes<br>
+                            as informações são:<br>
+                            Habitat, Filo<br>
+                            Estado de conservação, Dieta<br>
+                            Método de reprodução e Classe
+                        </p>
+                    }
+                    @if (tela==2) {
+                        <span class="grid">
+                            <span>
+                                <span class="square certo"></span>
+                                <p>Quando o quadrado ​estiver verde significa ​que a informação está ​100% correta</p>
+                            </span>
+                            <span>
+                                <span class="square meio"></span>
+                                <p>Quando o quadrado ​estiver amarelo ​significa que a ​informação não está ​completa</p>
+                            </span>
+                            <span>
+                                <span class="square errado"></span>
+                                <p>Quando o quadrado ​estiver vermelho ​significa que a ​informação está  ​totalmente errada</p>
+                            </span>
+                        </span>
+                    }
+                    <button (click)="changeScreen()">continuar</button>
                 </div>
             </span>
         }
