@@ -1,9 +1,14 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "dist/animaldle",
+  "rewrites": [
+    {
+      "source": "/(.*)", 
+      "destination": "/index.html"
+    }
+  ],
+  "github": {
+    "silent": true,
+    "autoJobCancelation": true
   }
-  
+}
