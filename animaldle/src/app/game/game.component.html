@@ -38,14 +38,18 @@
         @if(win) {
             <span class="ganhou">
                 <div>
-                    <h1>Você acertou</h1>
-                    <h2>O animal era: <a [textContent]="randCharacteristic(animalRand, 'name')"></a></h2>
-                    <p>Habitats: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Habitat')"></a></p>
-                    <p>Filo: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Filo')"></a></p>
-                    <p>Estado de conservação: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Estado de conservação')"></a></p>
-                    <p>Dieta: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Dieta')"></a></p>
-                    <p>Método de reprodução: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Método de reprodução')"></a></p>
-                    <p>Classe: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Classe')"></a></p>
+                    <a>
+                        <h1>Você acertou</h1>
+                        <h2>O animal era: <a [textContent]="randCharacteristic(animalRand, 'name')"></a></h2>
+                    </a>
+                    <ul>
+                        <li>Habitats: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Habitat')"></a></li>
+                        <li>Filo: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Filo')"></a></li>
+                        <li>Estado de conservação: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Estado de conservação')"></a></li>
+                        <li>Dieta: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Dieta')"></a></li>
+                        <li>Método de reprodução: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Método de reprodução')"></a></li>
+                        <li>Classe: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Classe')"></a></li>
+                    </ul>
                     <button (click)="reload()">Jogar de novo</button>
                 </div>
             </span>
@@ -58,28 +62,28 @@
                         <span class="input" style="background-color: #ddd; width: 80%;margin: -20px;justify-self: center;">
                             <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess" placeholder="Insira o nome do animal" disabled="true">
                         </span>
-                        <p>Insira um nome de um animal e as informações deles serão mostradas ​dentro de quadrados coloridos, dependendo do animal secreto os ​quadrados terão cores diferentes<br>
-                            as informações são:<br>
-                            Habitat, Filo<br>
-                            Estado de conservação, Dieta<br>
-                            Método de reprodução e Classe
-                        </p>
+                        <p>Insira um nome de um animal e as informações deles serão mostradas ​dentro de quadrados coloridos, dependendo do animal secreto os ​quadrados terão cores diferentes, as informações são:</p>
+                            <ul>
+                            <li>Habitat</li> <li>Filo</li><li>Estado de conservação</li> <li>Dieta</li> <li>Método de reprodução</li> <li>Classe</li>
+                            </ul>
                     }
                     @if (tela==2) {
-                        <span class="grid">
                             <span>
                                 <span class="square certo"></span>
                                 <p>Quando o quadrado ​estiver verde significa ​que a informação está ​100% correta</p>
                             </span>
+                    }
+                    @if (tela==3) {
                             <span>
                                 <span class="square meio"></span>
                                 <p>Quando o quadrado ​estiver amarelo ​significa que a ​informação não está ​completa</p>
                             </span>
+                    }
+                    @if (tela==4) {
                             <span>
                                 <span class="square errado"></span>
                                 <p>Quando o quadrado ​estiver vermelho ​significa que a ​informação está  ​totalmente errada</p>
                             </span>
-                        </span>
                     }
                     <button (click)="changeScreen()">continuar</button>
                 </div>

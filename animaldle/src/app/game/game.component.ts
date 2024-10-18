@@ -45,7 +45,7 @@ export class GameComponent implements AfterViewInit {
 
   changeScreen():void{
     this.tela++;
-    if(this.tela==3){
+    if(this.tela==5){
       this.howToPlay=false;
     }
   }
