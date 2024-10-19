@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "dist/animaldle",
+  "outputDirectory": "dist/animaldle/browser",
   "rewrites": [
     {
       "source": "/(.*)", 
