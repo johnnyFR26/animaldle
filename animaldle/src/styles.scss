@@ -1,1 +1,135 @@
-/* You can add global styles to this file, and also import other style files */
+body{    
+    background-image: linear-gradient(to right, rgb(6, 69, 23) 0%, #0e6a24 25%, #0e6a24 75%, rgb(6, 69, 23) 100%);
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+.caixa{
+    display: grid;
+    align-content: space-evenly;
+    justify-items: center;
+    background-color: white;
+    width: 40%;
+    min-width: 300px;
+    border-radius: 35px;
+    box-shadow: 0 20px #737373;
+    z-index: 1;
+}
+
+.campos{
+    width: 100%;
+    justify-self: center;
+    display: grid;
+    position: relative;
+    height: 50%;
+}
+.campo{
+    margin-bottom: 15px;
+    justify-self: center;
+    border-radius: 35px;
+    border-color: black;
+    width: 90%;
+    height: 40px;
+    border-style: solid;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: relative;
+}
+.campo:focus-within{
+    border-color: #049b3b;
+}
+.campo * {
+    padding-left: 10px;
+    font-size: 100%;
+    border-radius: 35px;
+    font-family: Adumu;
+}
+.campo .label {
+    align-self: center;
+    background-color: white;
+    position: absolute;
+    padding: 0 !important;
+    left: 10px;
+    border-radius: 0 !important;
+    transition: .3s ease-in-out;
+}
+.campo input {
+    border-style: none;
+    flex-grow: 1;
+    width: 30%;
+    z-index: 1;
+    background-color: transparent;
+}
+.campo input::placeholder{
+    font-size: 100%;
+    font-family: Adumu;
+    color: rgba(135, 135, 135, 0);
+    transition: .2s;
+}
+.campo input:focus{
+    outline:0;
+    z-index: 0;
+}
+.campo input:focus::placeholder{
+    transition: .2s;
+    color: rgba(135, 135, 135,100);
+}
+.campo input:focus + .label, input:not(input:placeholder-shown) + .label {
+    transform: translate(-2px,-109%);
+    border-style: none solid solid none;
+    border-radius: 4px !important;
+    padding: 0 2px !important;
+    font-size: 90%;
+    transition: .2s ease-in-out;
+}
+.modal {
+    width: 80px;
+    height: 50px;
+    color:white;
+    background-color: #ff3131;
+    border-radius: 5px !important;
+    padding: 5px;
+    position:absolute;
+    font-size: 80% !important;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    top:-40px;
+    right: 0;
+  }
+  .sus *::placeholder{
+      color: rgb(135, 135, 135) !important;
+      transition: .3s;
+  }
+  .bogas{
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      justify-self: center;
+      margin: 30px;
+  }
+  .bogas *{
+      font-size: 125%;
+      transition: 0.25s;
+      font-family: Adumu;
+      background-color: #00de51;
+      width: 180px;
+      height: 100%;
+      border-radius: 35px;
+      border-color: #04742c;
+      border-style: solid;
+      box-shadow: 0 5px #04742c;
+  }
+  .bogas *:hover{
+      color: white;
+      transition: 0.25s;
+      scale: 1.1;
+      background-color: #04742c;
+      box-shadow: 0 5px #012e11;
+  }
+canvas {display: block; position:absolute;z-index: 0;left: 0;}

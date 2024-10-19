@@ -16,7 +16,7 @@ export class HomeComponent implements AfterViewInit {
 
   private ctx!: CanvasRenderingContext2D;
   private width: number = window.innerWidth;
-  private height: number = window.innerHeight;
+  private height: number = window.innerHeight-1;
   private colunas: number = 0;
   private linhas: number = 0;
   private items: Item[] = [];

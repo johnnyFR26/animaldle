@@ -1,22 +1,5 @@
 body{
-    background-image: linear-gradient(to right, rgb(6, 69, 23) 0%, #0e6a24 25%, #0e6a24 75%, rgb(6, 69, 23) 100%);
-    margin: -8px;
-    height: 100vh;
-    display: flex;
-    letter-spacing: 1px;
-    justify-content: center;
     align-items: center;
-}
-.caixa{
-    display: grid;
-    align-content: space-evenly;
-    justify-items: center;
-    background-color: white;
-    width: 40%;
-    min-width: 300px;
-    border-radius: 35px;
-    box-shadow: 0 20px #737373;
-    z-index: 1;
 }
 h1{
     font-size: 40px;
@@ -24,114 +7,6 @@ h1{
     text-align: center;
     margin: 20px;
     height: 60px;
-}
-.campos{
-    width: 100%;
-    justify-self: center;
-    display: grid;
-    position: relative;
-    height: 250px;
-}
-.campo{
-    justify-self: center;
-    border-radius: 35px;
-    border-color: black;
-    width: 90%;
-    height: 40px;
-    border-style: solid;
-    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
-    display: flex;
-    position: relative;
-}
-.campo:focus-within{
-    border-color: #049b3b;
-}
-.modal {
-    width: 150px;
-    height: 40px;
-    color:white;
-    background-color: #ff3131;
-    border-radius: 5px !important;
-    padding: 5px;
-    position:absolute;
-    font-size: 80% !important;
-    text-align: center;
-    display: grid;
-    align-items: center;
-    top:-40px;
-    right: 0;
-  }
-.campo * {
-    padding-left: 10px;
-    font-size: 100%;
-    border-radius: 35px;
-    font-family: Adumu;
-}
-.campo .label {
-    align-self: center;
-    background-color: white;
-    position: absolute;
-    padding: 0 !important;
-    left: 10px;
-    border-radius: 0 !important;
-    transition: .3s ease-in-out;
-}
-input {
-    border-style: none;
-    flex-grow: 1;
-    width: 30%;
-}
-input::placeholder{
-    font-size: 100%;
-    font-family: Adumu;
-    color: rgba(135, 135, 135, 0);
-    transition: .3s;
-}
-input:focus{
-    outline:0;
-}
-input:focus::placeholder{
-    transition: .3s;
-    color: rgba(135, 135, 135,100);
-}
-.sus *::placeholder{
-    color: rgb(135, 135, 135) !important;
-    transition: .3s;
-}
-input:focus + .label, input:not(input:placeholder-shown) + .label {
-    transform: translate(-2px,-109%);
-    border-style: none solid solid none;
-    border-radius: 4px !important;
-    padding: 0 2px !important;
-    font-size: 90%;
-    transition: .4s ease-in-out;
-}
-.bogas{
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    justify-self: center;
-    margin: 30px;
-}
-.bogas *{
-    font-size: 125%;
-    transition: 0.25s;
-    font-family: Adumu;
-    background-color: #00de51;
-    width: 180px;
-    height: 100%;
-    border-radius: 35px;
-    border-color: #04742c;
-    border-style: solid;
-    box-shadow: 0 5px #04742c;
-}
-.bogas *:hover{
-    color: white;
-    transition: 0.25s;
-    scale: 1.1;
-    background-color: #04742c;
-    box-shadow: 0 5px #012e11;
 }
 .trotos{
     display: grid;
@@ -191,5 +66,4 @@ input:focus + .label, input:not(input:placeholder-shown) + .label {
     font-family: Adumu;
     src: url(../../assets/fonts/Adumu.ttf);
  }
- canvas {display: block; position:absolute;z-index: 1;}
  
