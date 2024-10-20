@@ -57,7 +57,6 @@ export class GameComponent implements AfterViewInit {
     const userData = localStorage.getItem('token')
     if (userData) {
       const user = JSON.parse(userData)
-      console.log(user)
       return user
     }else{
       console.log('User not found')
@@ -79,7 +78,7 @@ export class GameComponent implements AfterViewInit {
   createGame(game: any): void {
     this.GameService.createGame(game).subscribe(
       (game: any) => {
-        console.log(game)
+        return game
       },
       (error: any) => {
         console.log('Invalid credentials:', error);
@@ -111,7 +110,6 @@ export class GameComponent implements AfterViewInit {
     this.animalRand = this.animals[Math.ceil(Math.random()*this.animals.length)];
     const game = this.generateGameLog(this.animalRand)
     this.createGame(game)
-    console.log(this.animalRand)
   }
 
   searchAnimals(guess:string): any[] {

@@ -26,7 +26,6 @@ import { FormsModule } from '@angular/forms';
     loadUsers(): void {
       this.UserService.login(this.user).subscribe(
         (users: any) => {
-          console.table(users)
           this.setUserToLocalStorage(users)
           this.router.navigateByUrl('/game')
         },
