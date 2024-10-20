@@ -1,7 +1,9 @@
+import { GameService } from './../services/game.service';
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
 
 interface Animal {
     id: number,
@@ -27,7 +29,7 @@ interface Animal {
 })
 export class GameComponent implements AfterViewInit {
 
-  constructor(private AnimalService: AnimalService) {}
+  constructor(private AnimalService: AnimalService, private GameService: GameService) {}
 
 
   animals: Animal[] = [];
@@ -41,6 +43,7 @@ export class GameComponent implements AfterViewInit {
   ngOnInit(): void {
     this.howToPlay=true;
     this.loadAnimals();
+    this.getUserFromLocalStorage()
   }
 
   changeScreen():void{
@@ -48,6 +51,40 @@ export class GameComponent implements AfterViewInit {
     if(this.tela==5){
       this.howToPlay=false;
     }
+  }
+
+  getUserFromLocalStorage(): any {
+    const userData = localStorage.getItem('token')
+    if (userData) {
+      const user = JSON.parse(userData)
+      console.log(user)
+      return user
+    }else{
+      console.log('User not found')
+    }
+  }
+
+  generateGameLog(animal: Animal): any {
+    const userId = this.getUserFromLocalStorage().id
+    const animalId = animal.id
+    const id = uuidv4()
+    const game = {
+      id,
+      userId,
+      animalId
+    }
+    return game
+  }
+
+  createGame(game: any): void {
+    this.GameService.createGame(game).subscribe(
+      (game: any) => {
+        console.log(game)
+      },
+      (error: any) => {
+        console.log('Invalid credentials:', error);
+      }
+    );
   }
   
   loadAnimals(): void {
@@ -72,6 +109,8 @@ export class GameComponent implements AfterViewInit {
 
   randomAnimal(): void {
     this.animalRand = this.animals[Math.ceil(Math.random()*this.animals.length)];
+    const game = this.generateGameLog(this.animalRand)
+    this.createGame(game)
     console.log(this.animalRand)
   }
 

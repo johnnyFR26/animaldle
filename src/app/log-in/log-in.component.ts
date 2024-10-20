@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
       this.UserService.login(this.user).subscribe(
         (users: any) => {
           console.table(users)
-          localStorage.setItem("token", users.token)
+          this.setUserToLocalStorage(users)
           this.router.navigateByUrl('/game')
         },
         (error: any) => {
@@ -36,8 +36,13 @@ import { FormsModule } from '@angular/forms';
       );
     }
 
-    cadastrar(): void{
-      console.log('CLICADO')
+    setUserToLocalStorage(user: any): void {
+      const userData = {
+        name: user.user.fullName,
+        id: user.user.id,
+        token: user.token.token
+      }
+      localStorage.setItem('token', JSON.stringify(userData));
     }
   
     private ctx!: CanvasRenderingContext2D;
