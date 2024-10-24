@@ -4,21 +4,7 @@ import { RouterLink } from '@angular/router';
 import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-
-interface Animal {
-    id: number,
-    name: string,
-    characteristics: {
-      Habitat: string,
-      Filo: string,
-      "Estado de conservação": string,
-      Dieta: string,
-      "Método de reprodução": string,
-      Classe: string
-    },
-    createdAt: string,
-    updatedAt: string
-}
+import { Animal } from '../models/Animal.model';
 
 @Component({
   selector: 'app-game',
