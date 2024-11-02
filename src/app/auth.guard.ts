@@ -1,5 +1,5 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router, RouterLink } from '@angular/router';
+import { inject } from '@angular/core'
+import { CanActivateFn, Router, RouterLink } from '@angular/router'
 
 export const authGuard: CanActivateFn = (route, state) => {
 
@@ -9,8 +9,8 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   if (!logdin) {
     router.navigateByUrl('/logIn')
-    return false;
+    return false
   }
 
-  return true;
-};
+  return true
+}
