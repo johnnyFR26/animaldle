@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+#Paths added by Azion CLI
+.edge/
+.vulcan
