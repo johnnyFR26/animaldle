@@ -43,3 +43,6 @@ Thumbs.db
 #Paths added by Azion CLI
 .edge/
 .vulcan
+
+# Sentry Config File
+.sentryclirc
