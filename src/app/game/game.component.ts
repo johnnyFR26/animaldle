@@ -95,6 +95,8 @@ export class GameComponent implements AfterViewInit {
   randomAnimal(): void {
     this.animalRand = this.animals[Math.ceil(Math.random()*this.animals.length)];
     const game = this.generateGameLog(this.animalRand)
+    this.animalGuessed = [];
+    this.win = false;
     this.createGame(game)
   }
 
@@ -165,11 +167,6 @@ export class GameComponent implements AfterViewInit {
     }
   }
   
-  reload():void {
-    window.location.reload();
-  }
-
-
   private ctx!: CanvasRenderingContext2D;
   private width: number = window.innerWidth;
   private height: number = window.innerHeight;
