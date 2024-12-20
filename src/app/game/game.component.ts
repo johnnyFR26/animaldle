@@ -9,7 +9,7 @@ import { Animal } from '../models/Animal.model';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
@@ -177,6 +177,8 @@ export class GameComponent implements AfterViewInit {
   private rand(m: number, M: number): number {
     return Math.random() * (M - m) + m;
   }
+
+
 
   ngAfterViewInit(): void {
     const canvas = document.getElementById('myCanvas') as HTMLCanvasElement;

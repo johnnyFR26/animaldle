@@ -5,7 +5,7 @@ import { GameComponent } from '../game/game.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, GameComponent],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

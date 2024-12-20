@@ -1,16 +1,36 @@
-import { Routes, CanActivateFn } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { GameComponent } from './game/game.component';
-import { RankingComponent } from './ranking/ranking.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { Routes } from '@angular/router';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
-    {path: 'game', component: GameComponent, canActivate: [authGuard]},
-    {path: 'ranking', component: RankingComponent},
-    {path: 'logIn', component: LogInComponent},
-    {path: 'signIn', component: SignInComponent},
-    {path: '**', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'game',
+    loadComponent: () =>
+      import('./game/game.component').then((m) => m.GameComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'ranking',
+    loadComponent: () =>
+      import('./ranking/ranking.component').then((m) => m.RankingComponent),
+  },
+  {
+    path: 'logIn',
+    loadComponent: () =>
+      import('./log-in/log-in.component').then((m) => m.LogInComponent),
+  },
+  {
+    path: 'signIn',
+    loadComponent: () =>
+      import('./sign-in/sign-in.component').then((m) => m.SignInComponent),
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
