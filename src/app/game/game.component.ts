@@ -1,10 +1,10 @@
 import { GameService } from './../services/game.service';
-import { AfterViewInit, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { AfterViewInit, Component, effect, signal, WritableSignal } from '@angular/core';
 import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 import { Animal } from '../models/Animal.model';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -15,11 +15,13 @@ import { Animal } from '../models/Animal.model';
 })
 export class GameComponent implements AfterViewInit {
 
-  constructor(private AnimalService: AnimalService, private GameService: GameService) {}
+  constructor(private AnimalService: AnimalService, private GameService: GameService) {
+    effect(() => console.log('atualizado'));
+  }
 
 
   animals: Animal[] = [];
-  animalGuessed: Animal[] = [];
+  animalGuessed: WritableSignal<Animal[]> = signal([])
   guess = '';
   animalRand!: Animal;
   win = false;
@@ -95,7 +97,7 @@ export class GameComponent implements AfterViewInit {
   randomAnimal(): void {
     this.animalRand = this.animals[Math.ceil(Math.random()*this.animals.length)];
     const game = this.generateGameLog(this.animalRand)
-    this.animalGuessed = [];
+    this.animalGuessed.set([]);
     this.win = false;
     this.createGame(game)
   }
@@ -105,7 +107,20 @@ export class GameComponent implements AfterViewInit {
   }
 
   guessAnimal(animal:any): void {
-    this.animalGuessed.unshift(animal);
+    let verified = {
+      ...animal,
+      status: {
+        name: this.verifyCharacteristic(animal,'name'),
+        habitat: this.verifyCharacteristic(animal,'characteristics.Habitat'),
+        filo: this.verifyCharacteristic(animal,'characteristics.Filo'),
+        conservacao: this.verifyCharacteristic(animal,'characteristics.Estado de conservação'),
+        dieta: this.verifyCharacteristic(animal,'characteristics.Dieta'),
+        reproducao: this.verifyCharacteristic(animal,'characteristics.Método de reprodução'),
+        classe: this.verifyCharacteristic(animal,'characteristics.Classe')
+
+      }
+    }
+    this.animalGuessed.set([...this.animalGuessed(), verified]);
     this.guess = '';
     if(animal.name == this.animalRand.name)
       this.win = true;
@@ -153,7 +168,6 @@ export class GameComponent implements AfterViewInit {
       for(let i = 0; i < guessWords.length;i++){
         for(let j = 0; j < randomWords.length;j++){
           if (randomWords[j].includes(guessWords[i]) && guessWords[i].length > 2){
-            console.log()
             bool = true;
           }
         }

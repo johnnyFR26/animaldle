@@ -1,6 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { GameComponent } from '../game/game.component';
 
 @Component({
   selector: 'app-home',

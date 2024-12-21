@@ -9,6 +9,15 @@ export interface Animal {
       "Método de reprodução": string,
       Classe: string
     },
+    status: {
+      name: string,
+      habitat: string,
+      filo: string,
+      conservacao: string,
+      dieta: string,
+      reproducao: string,
+      classe: string
+    }
     createdAt: string,
     updatedAt: string
 }
