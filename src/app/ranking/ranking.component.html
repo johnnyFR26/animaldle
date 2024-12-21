@@ -1,1 +1,3 @@
-<p>ranking works!</p>
+@for (game of games(); track $index) {
+    <code>{{game|json}}</code>
+}
