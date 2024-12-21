@@ -120,7 +120,7 @@ export class GameComponent implements AfterViewInit {
 
       }
     }
-    this.animalGuessed.set([...this.animalGuessed(), verified]);
+    this.animalGuessed.set([verified, ...this.animalGuessed()]);
     this.guess = '';
     if(animal.name == this.animalRand.name)
       this.win = true;
