@@ -4,7 +4,6 @@ import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 import { Animal } from '../models/Animal.model';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -18,7 +17,6 @@ export class GameComponent implements AfterViewInit {
   constructor(private AnimalService: AnimalService, private GameService: GameService) {
     effect(() => console.log('atualizado'));
   }
-
 
   animals: Animal[] = [];
   animalGuessed: WritableSignal<Animal[]> = signal([])
@@ -269,5 +267,4 @@ class Item {
     ctx.drawImage(this.IMG, -Item.w / 2, -Item.h / 2, this.IMG.height*(ctx.canvas.width/1536), this.IMG.width*(ctx.canvas.width/1536));
     ctx.restore();
   }
-
 }

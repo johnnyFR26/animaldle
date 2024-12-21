@@ -27,7 +27,7 @@
                         <div class="description" [class]="try.status.name" [textContent]="try.name"> Nome </div>
                         <div class="description" [class]="try.status.habitat" [textContent]="try.characteristics.Habitat"> Habitat </div>
                         <div class="description" [class]="try.status.filo" [textContent]="try.characteristics.Filo"> Filo </div>
-                        <div class="description" [class]="try.status.conservacao" [textContent]=""> Estado de conservação </div>
+                        <div class="description" [class]="try.status.conservacao" [textContent]="getCharacteristic(try, 'characteristics.Estado de conservação')"> Estado de conservação </div>
                         <div class="description" [class]="try.status.dieta" [textContent]="try.characteristics.Dieta"> Dieta </div>
                         <div class="description" [class]="try.status.reproducao" [textContent]="getCharacteristic(try, 'characteristics.Método de reprodução')"> Método de reprodução </div>
                         <div class="description" [class]="try.status.classe" [textContent]="try.characteristics.Classe"> Classe </div>
