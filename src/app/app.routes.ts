@@ -8,6 +8,11 @@ export const routes: Routes = [
       import('./home/home.component').then((m) => m.HomeComponent),
   },
   {
+    path: 'leaf',
+    loadComponent: () =>
+      import('./leaf/leaf.component').then((m) => m.LeafComponent),
+  },
+  {
     path: 'game',
     loadComponent: () =>
       import('./game/game.component').then((m) => m.GameComponent),

@@ -1,3 +1,8 @@
-@for (game of games(); track $index) {
-    <code>{{game|json}}</code>
-}
+<app-leaf></app-leaf>
+<div class="caixa">
+    <ol>
+        @for (game of games(); track $index) {
+            <li>{{game.fullName}} - {{game.games?.length}}</li>
+        }
+    </ol>
+</div>

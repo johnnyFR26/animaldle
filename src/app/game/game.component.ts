@@ -1,18 +1,21 @@
 import { GameService } from './../services/game.service';
-import { AfterViewInit, Component, effect, signal, WritableSignal } from '@angular/core';
+import { Component, effect, signal, WritableSignal } from '@angular/core';
 import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 import { Animal } from '../models/Animal.model';
+import { Game } from '../models/Game.model';
+import { StorageUser } from '../lib/getLocalStorageUser';
+import { LeafComponent } from '../leaf/leaf.component';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, LeafComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
-export class GameComponent implements AfterViewInit {
+export class GameComponent {
 
   constructor(private AnimalService: AnimalService, private GameService: GameService) {
     effect(() => console.log('atualizado'));
@@ -20,16 +23,15 @@ export class GameComponent implements AfterViewInit {
 
   animals: Animal[] = [];
   animalGuessed: WritableSignal<Animal[]> = signal([])
-  guess = '';
+  guess: string = '';
   animalRand!: Animal;
-  win = false;
-  howToPlay=false;
-  tela=1;
+  win: boolean = false;
+  howToPlay:boolean=false;
+  tela:number=1;
 
   ngOnInit(): void {
-    this.howToPlay=true;
-    this.loadAnimals();
-    this.getUserFromLocalStorage()
+    this.howToPlay=true
+    this.loadAnimals()
   }
 
   changeScreen():void{
@@ -39,18 +41,16 @@ export class GameComponent implements AfterViewInit {
     }
   }
 
-  getUserFromLocalStorage(): any {
-    const userData = localStorage.getItem('token')
-    if (userData) {
-      const user = JSON.parse(userData)
-      return user
-    }else{
-      console.log('User not found')
-    }
-  }
 
-  generateGameLog(animal: Animal): any {
-    const userId = this.getUserFromLocalStorage().id
+  /**
+   * Generate a Game object based on the given Animal, with the user id
+   * obtained from local storage and a random id.
+   *
+   * @param animal The Animal that was guessed.
+   * @returns A Game object with the user id, animal id and a random id.
+   */
+  generateGameLog(animal: Animal): Game {
+    const userId = StorageUser().id
     const animalId = animal.id
     const id = uuidv4()
     const game = {
@@ -61,7 +61,13 @@ export class GameComponent implements AfterViewInit {
     return game
   }
 
-  createGame(game: any): void {
+  /**
+   * Creates a new game log in the database based on the given game object.
+   * This is called when the user guesses an animal correctly.
+   *
+   * @param game The game log to be created, with the user id, animal id and a random id.
+   */
+  createGame(game: Game): void {
     this.GameService.createGame(game).subscribe(
       (game: any) => {
         return game
@@ -72,6 +78,12 @@ export class GameComponent implements AfterViewInit {
     );
   }
   
+/**
+ * Loads a list of animals from the AnimalService, sorts them by name, 
+ * and stores them in the component's `animals` property. 
+ * It also triggers the `randomAnimal` function after loading.
+ * Logs an error message to the console if the request fails.
+ */
   loadAnimals(): void {
     this.AnimalService.getAnimals().subscribe(
       (animals: any) => {
@@ -104,7 +116,16 @@ export class GameComponent implements AfterViewInit {
     return this.animals.filter((animal: any) => animal.name.toLowerCase().includes(guess.toLowerCase()))
   }
 
-  guessAnimal(animal:any): void {
+  /**
+   * This function is called when the user guesses an animal.
+   * It verifies all the characteristics of the guessed animal against
+   * the animal randomly chosen by the component, and stores the result
+   * in the `animalGuessed` property.
+   * If the guessed animal is the same as the randomly chosen animal,
+   * it sets the `win` property to true.
+   * @param animal The animal guessed by the user.
+   */
+  guessAnimal(animal: Animal): void {
     let verified = {
       ...animal,
       status: {
@@ -124,7 +145,7 @@ export class GameComponent implements AfterViewInit {
       this.win = true;
   }
 
-  getCharacteristic(animal : Object ,type:string) :string {
+  getCharacteristic(animal : Animal ,type:string) :string {
     const types = type.split('.')
     let value: any = animal;
 
@@ -177,94 +198,5 @@ export class GameComponent implements AfterViewInit {
         return "errado";
       }
     }
-  }
-  
-  private ctx!: CanvasRenderingContext2D;
-  private width: number = window.innerWidth;
-  private height: number = window.innerHeight;
-  private colunas: number = 0;
-  private linhas: number = 0;
-  private items: Item[] = [];
-
-  private rand(m: number, M: number): number {
-    return Math.random() * (M - m) + m;
-  }
-
-
-
-  ngAfterViewInit(): void {
-    const canvas = document.getElementById('myCanvas') as HTMLCanvasElement;
-    this.ctx = canvas.getContext('2d')!;
-    const TempItem = new Item(this.rand, this.width, this.height,0);
-    this.colunas = Math.floor(this.width*1.8/(Item.w*2));
-    this.linhas = Math.floor(this.height*1.5/(Item.h*2));
-    canvas.width = this.width;
-    canvas.height = this.height;
-
-    for (let i = 0; i < this.colunas * this.linhas; i++) this.items.push(new Item(this.rand, this.width, this.height,this.colunas));
-
-    this.loop();
-  }
-
-  private loop(): void {
-    this.ctx.clearRect(0, 0, this.width, this.height);
-    this.items.forEach(item => item.move(this.ctx));
-    requestAnimationFrame(() => this.loop());
-  }
-}
-
-class Item {
-  private x: number = 0;
-  private y: number = 0;
-  private angle: number = 0;
-  private anglespeed: number = 0;
-  private speed: number = 0;
-  private IMG: HTMLImageElement;
-  private static currentImage: number = 0;
-  private static previousWidth: number = 1;
-  private static previousHeight: number = 1;
-  public static h: number = 0;
-  public static w: number = 0;
-
-  constructor(private rand: (m: number, M: number) => number, width: number, height: number, colunas: number) {
-    this.IMG = new Image();
-    this.IMG.src = '../../assets/public/foia'+Math.round(rand(0.5,4.5))+'.png';
-    Item.w = 210*(width/1536);
-    Item.h = 210*(width/1536)/4/1.5;
-    this.start(width, height, colunas);
-  }
-
-  private start(width: number, height: number,colunas: number): void {
-    Item.currentImage++;
-    if((Item.currentImage)%colunas==0){
-      this.x = Item.w;
-      this.y = Item.previousHeight + Item.h*2;
-    }
-    else{
-      this.x = Item.previousWidth+Item.w*2;
-      this.y = Item.previousHeight;
-    }
-    Item.previousHeight = this.y;
-    Item.previousWidth = this.x;
-    this.angle = this.rand(0, Math.PI * 2);
-    this.speed = this.rand(0.05, 0.15);
-  }
-
-  public move(ctx: CanvasRenderingContext2D): void {
-    if (this.y < -Item.h*8) {
-      this.y = ctx.canvas.height + Item.h*8;
-    }if (this.x < -Item.w*2) {
-      this.x = ctx.canvas.width + Item.w*2;
-    }
-    this.y -= this.speed / 0.1;
-    this.x -= this.speed / 0.1;
-    this.anglespeed -= 1;
-    this.angle += Math.cos(this.anglespeed / 50)/250;
-    ctx.save();
-    ctx.translate(this.x, this.y);
-    ctx.rotate(this.angle);
-    ctx.translate(-this.IMG.width*(ctx.canvas.width/1536)/2, -this.IMG.height*(ctx.canvas.width/1536)/2);
-    ctx.drawImage(this.IMG, -Item.w / 2, -Item.h / 2, this.IMG.height*(ctx.canvas.width/1536), this.IMG.width*(ctx.canvas.width/1536));
-    ctx.restore();
   }
 }

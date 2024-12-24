@@ -1,9 +1,10 @@
+
 export interface Game {
-    id: string;
+    id: string | number;
     userId: string;
-    animalId: string;
-    createdAt: string;
-    user: {
+    animalId: string | number;
+    createdAt?: string;
+    user?: {
         id: number;
         fullName: string;
     } | null;

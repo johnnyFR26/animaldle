@@ -1,27 +1,34 @@
-import { StorageUser } from './../lib/getLocalStorageUser';
-import { Game } from '../models/Game.model';
+import { UserService } from './../services/user.service';
 import { GameService } from './../services/game.service';
-import { AfterViewInit, Component, effect, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, effect, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { User } from '../models/User.model';
+import { LeafComponent } from '../leaf/leaf.component';
 
 @Component({
   selector: 'app-ranking',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LeafComponent],
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.scss'
 })
 export class RankingComponent implements OnInit {
 
   ngOnInit(): void {
-    this.LoadUserGames(StorageUser().id)
+    this.LoadUsersGames()
   }
 
-  games: WritableSignal<Game[]> = signal([])
-  user = StorageUser()
+  games: WritableSignal<User[]> = signal([])
 
-  constructor(private GameService: GameService){
+  constructor(private GameService: GameService, UserService: UserService) {
     effect(() => console.log('atualizado', this.games()))
+  }
+
+
+  LoadUsersGames() {
+    this.GameService.usersGameCount().subscribe((games) => {
+      this.games.set(games);
+    })
   }
 
   LoadUserGames(userId: number) {

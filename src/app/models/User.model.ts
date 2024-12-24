@@ -5,4 +5,8 @@ export interface User {
     password: string
     createdAt: string
     updatedAt: string
+    games?:[{
+        id: number
+        animalId:number
+    }]
 }

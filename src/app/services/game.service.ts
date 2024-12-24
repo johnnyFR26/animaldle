@@ -25,4 +25,8 @@ export class GameService {
     return this.http.get(`${this.API_URL}games/${userId}`)
   }
 
+  usersGameCount(): Observable<any> {
+    return this.http.get(`${this.API_URL}userGameCount`);
+  }
+
 }

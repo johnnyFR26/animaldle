@@ -1,43 +1,15 @@
-import { FormsModule } from '@angular/forms';
-import { UserService } from './../services/user.service';
 import { AfterViewInit, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RankingComponent } from '../ranking/ranking.component';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-leaf',
   standalone: true,
-  imports: [FormsModule],
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss'
+  imports: [],
+  templateUrl: './leaf.component.html',
+  styleUrl: './leaf.component.scss'
 })
-  export class SignInComponent implements AfterViewInit {
+export class LeafComponent implements AfterViewInit {
 
-    user = {
-      phone: '',
-      fullName: '',
-      password:'',
-      gender: ''
-    }
-
-    verifyPassword: string = ''
-
-    veryfyPasswordMatch(): boolean {
-      return this.user.password === this.verifyPassword
-    }
-
-    constructor( private UserService: UserService, private router: Router){}
-
-    cadastrar(): void {
-      this.UserService.createUser(this.user).subscribe(
-        (response: any) => {
-          console.log(response);
-          this.router.navigateByUrl('/logIn')
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      )
-    }
   private ctx!: CanvasRenderingContext2D;
   private width: number = window.innerWidth;
   private height: number = window.innerHeight-1;
@@ -48,6 +20,7 @@ import { Router } from '@angular/router';
   private rand(m: number, M: number): number {
     return Math.random() * (M - m) + m;
   }
+
   ngAfterViewInit(): void {
     const canvas = document.getElementById('myCanvas') as HTMLCanvasElement;
     this.ctx = canvas.getContext('2d')!;
@@ -61,13 +34,13 @@ import { Router } from '@angular/router';
 
     this.loop();
   }
+
   private loop(): void {
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.items.forEach(item => item.move(this.ctx));
     requestAnimationFrame(() => this.loop());
   }
 
-  
 }
 class Item {
   private x: number = 0;
