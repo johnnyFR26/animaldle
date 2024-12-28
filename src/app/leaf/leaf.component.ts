@@ -22,7 +22,6 @@ export class LeafComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('component loaded')
     const canvas = document.getElementById('myCanvas') as HTMLCanvasElement;
     this.ctx = canvas.getContext('2d')!;
     const TempItem = new Item(this.rand, this.width, this.height,0);

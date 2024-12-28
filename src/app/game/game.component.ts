@@ -1,5 +1,5 @@
 import { GameService } from './../services/game.service';
-import { Component, effect, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, signal, WritableSignal } from '@angular/core';
 import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
@@ -18,16 +18,18 @@ import { LeafComponent } from '../leaf/leaf.component';
 export class GameComponent {
 
   constructor(private AnimalService: AnimalService, private GameService: GameService) {
-    effect(() => console.log('atualizado'));
+    effect(() => console.log('atualizado', this.gameTip()));
   }
 
-  animals: Animal[] = [];
+  animals: Animal[] = []
   animalGuessed: WritableSignal<Animal[]> = signal([])
-  guess: string = '';
-  animalRand!: Animal;
-  win: boolean = false;
-  howToPlay:boolean=false;
-  tela:number=1;
+  guess: string = ''
+  animalRand!: Animal
+  win: boolean = false
+  howToPlay:boolean=false
+  tela:number=1
+  gameTip: WritableSignal<number> = signal(0)
+  addGameTip = computed(() => this.gameTip() + 1)
 
   ngOnInit(): void {
     this.howToPlay=true
@@ -39,6 +41,16 @@ export class GameComponent {
     if(this.tela==5){
       this.howToPlay=false;
     }
+  }
+
+  //funcionalidade de ajuda, escuta o signal do gameTip, se igual a 1 ele mostra a quantidade de letras no nome do animal em underlines
+  gameTips():void{
+    this.animalRand.name.length
+    if(this.gameTip()==1){
+      this.animalRand.name.split('').map((letter) => {
+        console.log(letter);
+        return `<span class="underline">${letter}</span>`
+      })}
   }
 
 
@@ -106,10 +118,16 @@ export class GameComponent {
 
   randomAnimal(): void {
     this.animalRand = this.animals[Math.ceil(Math.random()*this.animals.length)];
-    const game = this.generateGameLog(this.animalRand)
+    console.log(this.animalRand);
     this.animalGuessed.set([]);
     this.win = false;
+  }
+
+  winGame(): void {
+    const game = this.generateGameLog(this.animalRand)
     this.createGame(game)
+    this.win = true
+    this.animalGuessed.set([]);
   }
 
   searchAnimals(guess:string): any[] {
@@ -142,7 +160,7 @@ export class GameComponent {
     this.animalGuessed.set([verified, ...this.animalGuessed()]);
     this.guess = '';
     if(animal.name == this.animalRand.name)
-      this.win = true;
+      this.winGame()
   }
 
   getCharacteristic(animal : Animal ,type:string) :string {

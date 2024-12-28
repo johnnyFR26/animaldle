@@ -1,4 +1,3 @@
-import { UserService } from './../services/user.service';
 import { GameService } from './../services/game.service';
 import { Component, effect, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,7 +19,7 @@ export class RankingComponent implements OnInit {
 
   games: WritableSignal<User[]> = signal([])
 
-  constructor(private GameService: GameService, UserService: UserService) {
+  constructor(private GameService: GameService) {
     effect(() => console.log('atualizado', this.games()))
   }
 

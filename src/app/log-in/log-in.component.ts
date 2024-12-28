@@ -21,9 +21,6 @@ import { LeafComponent } from '../leaf/leaf.component';
       password: ''
     }
 
-    ngOnInit(): void {
-    }
-
     loadUsers(): void {
       this.UserService.login(this.user).subscribe(
         (users: any) => {

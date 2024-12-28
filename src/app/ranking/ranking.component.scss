@@ -7,3 +7,8 @@ div {
     font-family: Adumu;
     src: url(../../assets/fonts/Adumu.ttf);
  }
+
+section{
+    z-index: 2;
+    display: absolute;
+}

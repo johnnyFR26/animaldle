@@ -10,7 +10,7 @@ export class UserService {
 
   private API_URL: string = environment.apiUrl
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any> {
     return this.http.get(`${this.API_URL}user`);
@@ -42,6 +42,4 @@ export class UserService {
   userGameCount(userId: number): Observable<any> {
     return this.http.get(`${this.API_URL}user/game/${userId}`);
   }
-
-
 }

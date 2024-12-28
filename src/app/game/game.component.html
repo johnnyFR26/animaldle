@@ -5,7 +5,13 @@
         @if (guess) {
             <div class="searchs">
             @for (search of searchAnimals(guess); track $index) {
-                <span [textContent]="search.name" class="search" (click)="guessAnimal(search)"></span>
+                <span
+                [textContent]="search.name" 
+                class="search"
+                [tabindex]="$index" 
+                (keyup.enter)="guessAnimal(search)" 
+                (click)="guessAnimal(search)">
+            </span>
             }
             </div>
         }
