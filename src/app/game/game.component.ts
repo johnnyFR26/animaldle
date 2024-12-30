@@ -7,11 +7,12 @@ import { Animal } from '../models/Animal.model';
 import { Game } from '../models/Game.model';
 import { StorageUser } from '../lib/getLocalStorageUser';
 import { LeafComponent } from '../leaf/leaf.component';
+import { OnFocusDirective } from '../on-focus.directive';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [FormsModule, LeafComponent],
+  imports: [FormsModule, LeafComponent, OnFocusDirective],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })

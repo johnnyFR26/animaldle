@@ -1,14 +1,21 @@
 <body>
     <app-leaf></app-leaf>
     <div class="input">
-        <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess" placeholder="Insira o nome do animal">
+        <img src="../../assets/public/lupa.png">
+        <input 
+            id="animalInput" 
+            appOnFocus 
+            type="text" 
+            [(ngModel)]="guess" 
+            placeholder="Insira o nome do animal"
+        >
         @if (guess) {
             <div class="searchs">
             @for (search of searchAnimals(guess); track $index) {
                 <span
                 [textContent]="search.name" 
                 class="search"
-                [tabindex]="$index" 
+                [tabindex]="0" 
                 (keyup.enter)="guessAnimal(search)" 
                 (click)="guessAnimal(search)">
             </span>
@@ -30,13 +37,34 @@
                 </div>
                 @for (try of animalGuessed(); track $index) {
                     <div class="line">
-                        <div class="description" [class]="try.status.name" [textContent]="try.name"> Nome </div>
-                        <div class="description" [class]="try.status.habitat" [textContent]="try.characteristics.Habitat"> Habitat </div>
-                        <div class="description" [class]="try.status.filo" [textContent]="try.characteristics.Filo"> Filo </div>
-                        <div class="description" [class]="try.status.conservacao" [textContent]="getCharacteristic(try, 'characteristics.Estado de conservação')"> Estado de conservação </div>
-                        <div class="description" [class]="try.status.dieta" [textContent]="try.characteristics.Dieta"> Dieta </div>
-                        <div class="description" [class]="try.status.reproducao" [textContent]="getCharacteristic(try, 'characteristics.Método de reprodução')"> Método de reprodução </div>
-                        <div class="description" [class]="try.status.classe" [textContent]="try.characteristics.Classe"> Classe </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.name" 
+                            [textContent]="try.name"> Nome </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.habitat" 
+                            [textContent]="try.characteristics.Habitat"> Habitat </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.filo" 
+                            [textContent]="try.characteristics.Filo"> Filo </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.conservacao" 
+                            [textContent]="getCharacteristic(try, 'characteristics.Estado de conservação')"> Estado de conservação </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.dieta" 
+                            [textContent]="try.characteristics.Dieta"> Dieta </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.reproducao" 
+                            [textContent]="getCharacteristic(try, 'characteristics.Método de reprodução')"> Método de reprodução </div>
+                        <div 
+                            class="description" 
+                            [class]="try.status.classe" 
+                            [textContent]="try.characteristics.Classe"> Classe </div>
                     </div>
                 }
             </div>
@@ -56,7 +84,7 @@
                         <li>Método de reprodução: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Método de reprodução')"></a></li>
                         <li>Classe: <a [textContent]="randCharacteristic(animalRand, 'characteristics.Classe')"></a></li>
                     </ul>
-                    <button (click)="randomAnimal()">Jogar de novo</button>
+                    <button (keyup.enter)="randomAnimal()" (click)="randomAnimal()">Jogar de novo</button>
                 </div>
             </span>
         }
@@ -66,7 +94,7 @@
                     <h1>Como Jogar?</h1>
                     @if (tela==1) {
                         <span class="input" style="background-color: #ddd; width: 80%;margin: -20px;justify-self: center;">
-                            <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" [(ngModel)]="guess" placeholder="Insira o nome do animal" disabled="true">
+                            <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" placeholder="Insira o nome do animal" disabled="true">
                         </span>
                         <p>Insira um nome de um animal e as informações deles serão mostradas ​dentro de quadrados coloridos, dependendo do animal secreto os ​quadrados terão cores diferentes, as informações são:</p>
                             <ul>
