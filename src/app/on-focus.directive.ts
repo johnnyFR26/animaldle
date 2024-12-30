@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
+import { afterRender, AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
   selector: '[appOnFocus]',
@@ -8,10 +8,14 @@ export class OnFocusDirective implements AfterViewInit {
 
   @Input('appFocus') shouldFocus: boolean = true;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {
+    afterRender(()=>{
+      el.nativeElement.focus()
+    })
+   }
 
   ngAfterViewInit(): void {
-    if (!this.shouldFocus) {
+    if (this.shouldFocus) {
       this.el.nativeElement.focus();
     }
   }

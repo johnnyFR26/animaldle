@@ -1,5 +1,5 @@
 import { GameService } from './../services/game.service';
-import { Component, computed, effect, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, signal, WritableSignal, ElementRef, afterRender } from '@angular/core';
 import { AnimalService } from '../services/animal.service';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
@@ -18,7 +18,10 @@ import { OnFocusDirective } from '../on-focus.directive';
 })
 export class GameComponent {
 
-  constructor(private AnimalService: AnimalService, private GameService: GameService) {
+  constructor(private AnimalService: AnimalService, private GameService: GameService, elementRef: ElementRef) {
+    afterRender(()=>{
+      elementRef.nativeElement.querySelector('input').focus()
+    })
     effect(() => console.log('atualizado', this.gameTip()));
   }
 

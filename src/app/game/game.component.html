@@ -4,7 +4,7 @@
         <img src="../../assets/public/lupa.png">
         <input 
             id="animalInput" 
-            appOnFocus 
+            appOnFocus="true"
             type="text" 
             [(ngModel)]="guess" 
             placeholder="Insira o nome do animal"
@@ -92,32 +92,39 @@
             <span class="como">
                 <div>
                     <h1>Como Jogar?</h1>
-                    @if (tela==1) {
-                        <span class="input" style="background-color: #ddd; width: 80%;margin: -20px;justify-self: center;">
-                            <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" placeholder="Insira o nome do animal" disabled="true">
-                        </span>
-                        <p>Insira um nome de um animal e as informações deles serão mostradas ​dentro de quadrados coloridos, dependendo do animal secreto os ​quadrados terão cores diferentes, as informações são:</p>
+                    @switch (tela) {
+                        @case (1) {
+                            <span class="input" style="background-color: #ddd; width: 80%;margin: -20px;justify-self: center;">
+                                <img src="../../assets/public/lupa.png"><input id="animalInput" type="text" placeholder="Insira o nome do animal" disabled="true">
+                            </span>
+                            <p>Insira um nome de um animal e as informações deles serão mostradas ​dentro de quadrados coloridos, dependendo do animal secreto os ​quadrados terão cores diferentes, as informações são:</p>
                             <ul>
-                            <li>Habitat</li> <li>Filo</li><li>Estado de conservação</li> <li>Dieta</li> <li>Método de reprodução</li> <li>Classe</li>
+                                <li>Habitat</li>
+                                <li>Filo</li>
+                                <li>Estado de conservação</li> 
+                                <li>Dieta</li> 
+                                <li>Método de reprodução</li> 
+                                <li>Classe</li>
                             </ul>
-                    }
-                    @if (tela==2) {
+                        }
+                        @case (2) {
                             <span>
                                 <span class="square certo"></span>
                                 <p>Quando o quadrado ​estiver verde significa ​que a informação está ​100% correta</p>
                             </span>
-                    }
-                    @if (tela==3) {
+                        }
+                        @case (3) {
                             <span>
                                 <span class="square meio"></span>
                                 <p>Quando o quadrado ​estiver amarelo ​significa que a ​informação não está ​completa</p>
                             </span>
-                    }
-                    @if (tela==4) {
+                        }
+                        @case (4) {
                             <span>
                                 <span class="square errado"></span>
                                 <p>Quando o quadrado ​estiver vermelho ​significa que a ​informação está  ​totalmente errada</p>
                             </span>
+                        }
                     }
                     <button (click)="changeScreen()">continuar</button>
                 </div>
